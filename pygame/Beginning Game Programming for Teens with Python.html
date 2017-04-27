@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python -->
+<html lang="en-US" class="windows chrome"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Google Tag Manager -->
+    <script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python_files/cc.js.下载"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python_files/itunes_autolinkmaker.js.下载"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python_files/analytics.js.下载"></script><script type="text/javascript" async="" src="https://www.google.com/cse/cse.js?cx=014141977933580679837:nad2btglbby"></script><script id="facebook-jssdk" async="" src="https://connect.facebook.net/en_US/all.js#xfbml=1"></script><script async="" src="./Beginning Game Programming for Teens with Python_files/gtm.js.下载"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PT3PDSN');</script>
+    <!-- End Google Tag Manager -->
+
+    <script type="text/javascript" lang="en">var rootTag = document.getElementsByTagName("html");var classes = rootTag[0].className;rootTag[0].className = classes.replace("no-js","");if (navigator.appVersion.indexOf("Win")==-1) { classes = rootTag[0].className;rootTag[0].className = classes.replace("windows","") } </script>
+    
+    <meta property="fb:app_id" content="118196468516511">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Beginning Game Programming for Teens with Python</title>					<meta name="twitter:card" content="photo">
+					<meta name="twitter:site" content="@rwenderlich">
+					<meta name="twitter:title" content="Beginning Game Programming for Teens with Python - Ray Wenderlich">
+					<meta name="twitter:description" content="">
+					<meta name="twitter:url" content="https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python">
+					<meta name="twitter:image" content="">
+									<meta property="og:title" content="Beginning Game Programming for Teens with Python">
+				<meta property="og:type" content="article">
+				<meta property="og:site_name" content="Ray Wenderlich">
+       		    <meta property="og:url" content="https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python">
+				<meta property="og:description" content="">
+				
+<!-- This site is optimized with the Yoast SEO plugin v4.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="In this tutorial, you&#39;ll create a simple game called Bunnies and Badgers, where the bunny, has to defend a castle against an attacking horde of badgers.">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://platform.twitter.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+      <meta name="onesignal" content="wordpress-plugin">
+          <link rel="manifest" href="https://www.raywenderlich.com/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/manifest.json.php?gcm_sender_id=">
+          <script src="./Beginning Game Programming for Teens with Python_files/OneSignalSDK.js.下载" async=""></script>    <script>
+
+      window.OneSignal = window.OneSignal || [];
+
+      OneSignal.push( function() {
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = "OneSignalSDKUpdaterWorker.js.php";
+        OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";
+        OneSignal.SERVICE_WORKER_PARAM = { scope: '/' };
+
+        OneSignal.setDefaultNotificationUrl("https://www.raywenderlich.com");
+        var oneSignal_options = {};
+        window._oneSignalInitOptions = oneSignal_options;
+
+        oneSignal_options['wordpress'] = true;
+oneSignal_options['appId'] = '653ee6c3-c5e0-440f-9532-0f7d561ae5be';
+oneSignal_options['autoRegister'] = true;
+oneSignal_options['httpPermissionRequest'] = { };
+oneSignal_options['httpPermissionRequest']['enable'] = true;
+oneSignal_options['welcomeNotification'] = { };
+oneSignal_options['welcomeNotification']['title'] = "raywenderlich.com";
+oneSignal_options['welcomeNotification']['message'] = "Thanks — we’ll keep you up-to-date with the latest happenings on the site!";
+oneSignal_options['welcomeNotification']['url'] = "https://www.raywenderlich.com";
+oneSignal_options['path'] = "https://www.raywenderlich.com/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/";
+oneSignal_options['safari_web_id'] = "web.onesignal.auto.08b05e7f-114b-4b4f-a485-263bca659097";
+oneSignal_options['promptOptions'] = { };
+oneSignal_options['notifyButton'] = { };
+oneSignal_options['notifyButton']['enable'] = true;
+oneSignal_options['notifyButton']['position'] = 'bottom-right';
+oneSignal_options['notifyButton']['theme'] = 'default';
+oneSignal_options['notifyButton']['size'] = 'medium';
+oneSignal_options['notifyButton']['prenotify'] = true;
+oneSignal_options['notifyButton']['showCredit'] = false;
+oneSignal_options['notifyButton']['text'] = {};
+oneSignal_options['notifyButton']['colors'] = {};
+oneSignal_options['notifyButton']['colors']['circle.background'] = '#006837';
+oneSignal_options['notifyButton']['colors']['dialog.button.background'] = '#000000';
+oneSignal_options['notifyButton']['colors']['dialog.button.background.hovering'] = '#006837';
+oneSignal_options['notifyButton']['colors']['dialog.button.background.active'] = '#006837';
+              oneSignal_options['autoRegister'] = false;
+              OneSignal.showHttpPrompt();
+              OneSignal.init(window._oneSignalInitOptions);
+                    });
+
+      function documentInitOneSignal() {
+        var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");
+
+        var oneSignalLinkClickHandler = function(event) { OneSignal.push(['registerForPushNotifications']); event.preventDefault(); };        for(var i = 0; i < oneSignal_elements.length; i++)
+          oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);
+      }
+
+      if (document.readyState === 'complete') {
+           documentInitOneSignal();
+      }
+      else {
+           window.addEventListener("load", function(event){
+               documentInitOneSignal();
+          });
+      }
+    </script>
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.raywenderlich.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Beginning Game Programming for Teens with Python_files/wp-emoji-release.min.js.下载" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="style-main-css" href="./Beginning Game Programming for Teens with Python_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="highlight.js-css" href="./Beginning Game Programming for Teens with Python_files/highlight.js.atom-one-light.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="swiftype-css" href="./Beginning Game Programming for Teens with Python_files/autocomplete.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./Beginning Game Programming for Teens with Python_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var swiftypeParams = {"engineKey":"omdTFN4ka9Dq1GBywQZq"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/install_swiftype.min.js.下载"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/jquery.js.下载"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/jquery-migrate.min.js.下载"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/global_combined.1.0.15.js.下载"></script><script type="text/javascript" async="" src="https://cdn1.developermedia.com/a.min.js"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/easy-spoiler.js.下载"></script>
+<link rel="https://api.w.org/" href="https://www.raywenderlich.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.raywenderlich.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://koenig-assets.raywenderlich.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.7.3">
+<link rel="shortlink" href="https://www.raywenderlich.com/?p=24252">
+<link rel="alternate" type="application/json+oembed" href="https://www.raywenderlich.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python">
+<link rel="alternate" type="text/xml+oembed" href="https://www.raywenderlich.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&amp;format=xml">
+<link type="text/css" rel="stylesheet" href="./Beginning Game Programming for Teens with Python_files/easy-spoiler.css"><script type="text/javascript"><!--
+function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','toolbar=0,status=0,resizable=1,width=460,height=320');	return false;}
+//-->
+</script>
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+    <link rel="stylesheet" href="./Beginning Game Programming for Teens with Python_files/print.css" type="text/css" media="print">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://www.raywenderlich.com/xmlrpc.php">
+    <script>var siteUrl = 'https://koenig-assets.raywenderlich.com/wp-content/themes/raywenderlich'</script>
+
+    <noscript>&lt;img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=915433011818742&amp;amp;ev=PixelInitialized" /&gt;</noscript>
+    <style>.single article.post img { max-width:100%; }</style>
+  <script type="text/javascript" async="" src="https://s3.buysellads.com/ac/bsa.js"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python_files/embed.js.下载"></script><script type="text/javascript" async="" src="https://cdn2.developermedia.com/a.min.js"></script><link rel="stylesheet" type="text/css" href="chrome-extension://fidicgekecdkdmkjghdgadgdmcfodfid/themes/default/content.css"><style>@-moz-keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}@-webkit-keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}embed,object{animation-duration:.001s;-ms-animation-duration:.001s;-moz-animation-duration:.001s;-webkit-animation-duration:.001s;-o-animation-duration:.001s;animation-name:nodeInserted;-ms-animation-name:nodeInserted;-moz-animation-name:nodeInserted;-webkit-animation-name:nodeInserted;-o-animation-name:nodeInserted;}</style><link rel="stylesheet" href="./Beginning Game Programming for Teens with Python_files/OneSignalSDKStyles.css"></head>
+  <body class="post-template-default single single-post postid-24252 single-format-standard">
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = '//s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=118196468516511";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT3PDSN"
+    height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="wrapper">
+      <header id="branding" class="rw_subservice">
+        <div id="main-header">
+          <!-- <div id="top-sales-banner">
+            <p><a href="https://videos.raywenderlich.com/courses" id="sub-banner-top">Skip the reading — <span>click here</span> for our massive collection of video courses</a></p>
+            <button><img src="https://koenig-assets.raywenderlich.com/wp-content/themes/raywenderlich/images/global/close.svg" alt="close"></button>
+          </div> -->
+
+          <div id="top-sales-banner" style="display: block;">
+            <p><a href="https://store.raywenderlich.com/products/rwdevcon-2017-vault-bundle" id="sub-banner-top" sl-processed="1">50% off the complete RWDevCon 2017 Vault — this week only! <span>Click here</span></a></p>
+            <button><img src="./Beginning Game Programming for Teens with Python_files/close.svg" alt="close"></button>
+          </div>
+
+          <div class="block">
+            <nav id="top">
+              <ul id="main-nav">
+                <li class="logo-col no-padding">
+                  <div class="logo-left">
+                    <a href="https://www.raywenderlich.com/" sl-processed="1"></a>
+                  </div>
+                </li>
+
+                <li class="mobile-menu-toggle">
+                  <div>
+                    <button id="toggle-menu" aria-label="Mobile menu"><i class="icon-menu_icon_dash" aria-hidden="true"></i></button>
+                  </div>
+                </li>
+                      
+                <li id="main-links">  
+                  <aside id="search-view" class="grow-wide">
+                    <form action="https://www.raywenderlich.com/" id="nav-search" method="get">
+                      <input type="search" placeholder="Search" id="nav-search-box" name="s" autocomplete="off">
+                      <input type="hidden" name="cof" value="FORID:10">
+                      <button id="search-submit-mobile" type="submit" aria-label="Submit search">
+                        <svg version="1.1" id="svg-search-mobile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="20px" viewBox="0 0 34 32" enable-background="new 0 0 34 32" xml:space="preserve" aria-hidden="true">
+                          <path d="M32.128,30.048l-5.312-5.312c-0.032-0.032-0.032-0.032-0.032-0.032l-1.728-1.728c1.983-2.4,3.168-5.504,3.168-8.865
+                                C28.225,6.336,21.889,0,14.112,0C6.336,0,0,6.336,0,14.112c0,7.777,6.336,14.113,14.112,14.113c3.712,0,7.041-1.44,9.568-3.776
+                                l5.088,5.088c0.032,0.032,0.032,0.032,0.032,0.032l1.921,1.92c0.479,0.447,1.184,0.544,1.567,0.128
+                                C32.672,31.232,32.607,30.527,32.128,30.048L32.128,30.048z M14.112,26.24c-6.688,0-12.128-5.44-12.128-12.128
+                                S7.424,1.984,14.112,1.984S26.24,7.424,26.24,14.112S20.8,26.24,14.112,26.24L14.112,26.24z"></path>
+                        </svg>
+                      </button>
+                    </form>
+                  </aside>
+                  <ul>
+                    <li class="padding-left">
+                                            <a href="https://www.raywenderlich.com/" class="top-level-link active" sl-processed="1">
+                        Tutorials<svg version="1.1" class="svg-angle-down" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="9px" viewBox="1.376 11.648 17.824 10.4" enable-background="new 1.376 11.648 17.824 10.4" xml:space="preserve" aria-hidden="true">
+                          <path d="M19.2,13.152c0,0.149-0.063,0.288-0.192,0.416l-8.32,8.321c-0.106,0.105-0.245,0.159-0.416,0.159
+                          c-0.17,0-0.299-0.054-0.384-0.159l-8.32-8.321c-0.128-0.128-0.192-0.267-0.192-0.416s0.064-0.288,0.192-0.416l0.864-0.896
+                          c0.128-0.128,0.267-0.192,0.416-0.192s0.288,0.064,0.416,0.192l7.008,7.008l7.041-7.008c0.105-0.128,0.244-0.192,0.416-0.192
+                          c0.17,0,0.299,0.064,0.383,0.192l0.896,0.896C19.137,12.843,19.2,12.981,19.2,13.152z"></path>
+                        </svg>
+                      </a>
+                      <ul class="dropdown-menu written-dropdown slighter-fade-up">
+                        <li><a href="https://www.raywenderlich.com/swift-language-tutorials" sl-processed="1"><i class="category-icon cat-1" aria-hidden="true"></i><span>Swift</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/ios-tutorials" sl-processed="1"><i class="category-icon cat-2" aria-hidden="true"></i><span>iOS</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/android-tutorials" sl-processed="1"><i class="category-icon cat-3" aria-hidden="true"></i><span>Android</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/macos-tutorials" sl-processed="1"><i class="category-icon cat-4" aria-hidden="true"></i><span>macOS</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/apple-game-frameworks-tutorials" sl-processed="1"><i class="category-icon cat-5" aria-hidden="true"></i><span>Apple Game Frameworks</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/unity-tutorials" sl-processed="1"><i class="category-icon cat-6" aria-hidden="true"></i><span>Unity</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/articles" sl-processed="1"><i class="category-icon cat-7" aria-hidden="true"></i><span>Articles</span></a></li>
+                        <li><a href="https://www.raywenderlich.com/tutorial-archive" class="active" sl-processed="1"><i class="category-icon cat-8" aria-hidden="true"></i><span>Archive</span></a></li>
+                      </ul>
+                    </li>
+
+                    <li>
+                      <a href="https://videos.raywenderlich.com/" class="top-level-link" sl-processed="1">Videos<svg version="1.1" class="svg-angle-down" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="9px" viewBox="1.376 11.648 17.824 10.4" enable-background="new 1.376 11.648 17.824 10.4" xml:space="preserve" aria-hidden="true">
+                        <path d="M19.2,13.152c0,0.149-0.063,0.288-0.192,0.416l-8.32,8.321c-0.106,0.105-0.245,0.159-0.416,0.159
+                          c-0.17,0-0.299-0.054-0.384-0.159l-8.32-8.321c-0.128-0.128-0.192-0.267-0.192-0.416s0.064-0.288,0.192-0.416l0.864-0.896
+                          c0.128-0.128,0.267-0.192,0.416-0.192s0.288,0.064,0.416,0.192l7.008,7.008l7.041-7.008c0.105-0.128,0.244-0.192,0.416-0.192
+                          c0.17,0,0.299,0.064,0.383,0.192l0.896,0.896C19.137,12.843,19.2,12.981,19.2,13.152z"></path>
+                        </svg></a>
+                      <ul class="dropdown-menu video-dropdown slighter-fade-up">
+                        <li><a href="https://videos.raywenderlich.com/" sl-processed="1"><i class="category-icon cat-1" aria-hidden="true"></i><span>Home</span></a></li>
+                        <li><a href="https://videos.raywenderlich.com/courses" sl-processed="1"><i class="category-icon cat-2" aria-hidden="true"></i><span>Courses</span></a></li>
+                        <li><a href="https://videos.raywenderlich.com/screencasts" sl-processed="1"><i class="category-icon cat-3" aria-hidden="true"></i><span>Screencasts</span></a></li>
+                        <li><a href="https://videos.raywenderlich.com/schedule" sl-processed="1"><i class="category-icon cat-4" aria-hidden="true"></i><span>Upcoming</span></a></li>
+                      </ul>
+                    </li>
+
+                    <li><a href="https://www.raywenderlich.com/rwpodcast" sl-processed="1">Podcast</a></li>
+                    <li><a href="https://forums.raywenderlich.com/" sl-processed="1">Forums</a></li>
+                    <li class="padding-right">
+                      <a href="https://store.raywenderlich.com/" sl-processed="1">Store</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="search-button-holder-desktop">
+                  <button id="search-submit-desktop" class="search-submit" aria-label="Show search field">
+                    <svg version="1.1" id="svg-search-desktop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="22px" viewBox="0 0 34 32" enable-background="new 0 0 34 32" xml:space="preserve" aria-hidden="true">
+                    <path d="M32.128,30.048l-5.312-5.312c-0.032-0.032-0.032-0.032-0.032-0.032l-1.728-1.728c1.983-2.4,3.168-5.504,3.168-8.865
+                      C28.225,6.336,21.889,0,14.112,0C6.336,0,0,6.336,0,14.112c0,7.777,6.336,14.113,14.112,14.113c3.712,0,7.041-1.44,9.568-3.776
+                      l5.088,5.088c0.032,0.032,0.032,0.032,0.032,0.032l1.921,1.92c0.479,0.447,1.184,0.544,1.567,0.128
+                      C32.672,31.232,32.607,30.527,32.128,30.048L32.128,30.048z M14.112,26.24c-6.688,0-12.128-5.44-12.128-12.128
+                      S7.424,1.984,14.112,1.984S26.24,7.424,26.24,14.112S20.8,26.24,14.112,26.24L14.112,26.24z"></path>
+                    </svg>
+                  </button>
+                </li>                    
+  
+                <script>
+                  jQuery.ajax({
+                    type : "POST",
+                    data : { "javascript" : "false", "url"  : window.location.href  },
+                    url : "https://www.raywenderlich.com/wp-content/themes/raywenderlich/templates/login_area.php",
+                    cache : false,
+                  }).done(function(html) {
+                    jQuery("ul#main-nav").append(html);
+                  })
+                </script>
+
+              
+				<li id="user-account-navigation" class="login-controls logged-out">
+	          <div>
+	              <a href="https://www.raywenderlich.com/session/new?mode=login&amp;redirect_uri=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python" class="login-link" sl-processed="1">Login / Sign Up</a>
+	              <a href="https://store.raywenderlich.com/products/subscription" id="sub-banner-navigation" class="subscribe-link" sl-processed="1"><span class="full-text">Become a video</span><span class="full-text">subscriber</span><span class="mobile-text">Subscribe</span></a>
+	          </div>
+	      </li>
+
+</ul>
+            </nav>
+          </div>
+        </div>
+        <div class="rw-green-border"></div>
+
+        <div class="subnav-band"></div>
+              <!-- .wrapper -->
+      </header>
+    </div>
+
+    <div class="wrapper clearfix" id="print-header" style="display:none">
+      <img src="./Beginning Game Programming for Teens with Python_files/header-graphic.svg" width="1200" height="78">
+    </div>
+    <div id="main" class="wrapper clearfix">
+      <div id="container">
+<div id="primary" class="no-margin-left">
+  <div id="primary-container">
+    <div class="banner-ad" syle="overflow:hidden">
+      <!-- BuySellAds.com Ad Code -->
+      <div id="bsap_1272017" class="bsarocks bsap_39fcef7ed4520883d78f129c33995fd2"></div>
+      <!-- End BuySellAds.com Ad Code -->
+    </div>
+    <div id="content">
+            <article id="post-24252" class="clearfix post-24252 post type-post status-publish format-standard hentry category-archive tag-tutorial tag-sample-code tag-game tag-python tag-teen tag-lang_en">
+        <header class="entry-header">
+          <h2 class="entry-title">
+            <a href="https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python" title="Beginning Game Programming for Teens with Python" sl-processed="1">Beginning Game Programming for Teens with Python</a>
+          </h2>
+          <div class="tutorial-meta" id="larger-screens">
+            <div class="author-meta">
+              <img src="./Beginning Game Programming for Teens with Python_files/rw-logo_250.png" width="100" height="100"> <a href="https://www.raywenderlich.com/about" class="author-name" sl-processed="1">Julian Meyer</a> <span class="author-post-date">on January 22, 2013 </span>
+                              </div>
+            <div class="social-links">
+              <ul>
+                <li class="twitter"><div id="tweetbutton24252m" class="tw_button" style="margin-bottom:10px;"><a href="http://twitter.com/share?url=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&amp;via=rwenderlich&amp;text=Beginning%20Game%20Programming%20for%20Teens%20with%20Python&amp;related=jmeyer2k&amp;lang=en&amp;count=horizontal&amp;counturl=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python" class="twitter-share-button" style="width:55px;height:22px;background:transparent url(&#39;https://koenig-assets.raywenderlich.com/wp-content/plugins/wp-tweet-button/tweetn.png&#39;) no-repeat  0 0;text-align:left;text-indent:-9999px;display:block;" sl-processed="1">Tweet</a></div></li>                <li class="facebook iframe-link" style="position: relative;top: 0px;left: 11px; display: block;">
+                  <iframe src="./Beginning Game Programming for Teens with Python_files/like.html" allowtransparency="true" frameborder="0" scrolling="no" style="width: 74px; height: 20px;"></iframe>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        
+        <div class="content-wrapper">
+          <div id="attachment_28257" style="width: 260px" class="wp-caption alignright"><a href="./Beginning Game Programming for Teens with Python_files/BunniesBadgers.png" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/BunniesBadgers.png" alt="Learn how to make a simple game with Python!" title="Learn how to make a simple game with Python!" width="250" height="205" class="size-full wp-image-28257"></a><p class="wp-caption-text">Learn how to make a simple game with Python!</p></div>
+<p><i>This is a post by Tutorial Team Member <a href="https://www.raywenderlich.com/?page_id=9#julianmeyer" sl-processed="1">Julian Meyer</a>, a 13-year-old python developer. You can find him on <a href="https://plus.google.com/u/0/117404693911977592313?rel=author" rel="author" target="_blank" sl-processed="1">Google+</a> and <a href="https://twitter.com/jmeyer2k" target="_blank" sl-processed="1">Twitter</a>.<br>
+</i></p>
+<p>Have you ever wondered how video games are created? It’s not as complicated as you might think!</p>
+<p>In this tutorial, you’ll create a simple game called Bunnies and Badgers, where the hero, the bunny, has to defend a castle against an attacking horde of badgers. :O</p>
+<p>To write this game, you’ll use Python. No, I’m not talking about a big snake! :] </p>
+<p>Python is a computer programming language. We chose Python for this tutorial because it’s a simple language to start out with, and is fun and easy to learn.</p>
+<p>If you are new to Python, before you begin check out this book: <a href="http://greenteapress.com/thinkpython/html/index.html" sl-processed="1">Think Python: How to Think Like a Computer Scientist</a>. That should get you up to speed.</p>
+<p>Then dive back here and get ready – there’s a war coming on between the bunnies and the badgers. Keep reading to jump into the fray!<span id="more-24252"></span></p>
+<h2>Getting Started: Installing Python</h2>
+<p>If you want to try this tutorial on a Windows PC, you need to install <a href="http://www.python.org/download/" sl-processed="1">Python</a>. Make sure you grab the 2.7.3 version and <em>NOT the 3.3.0 version</em>! After running the installer, you should have <em>IDLE</em> in your All Programs folder in your start menu. Launch IDLE to get started.</p>
+<p>If you are on a Mac, you already have Python installed! Just open Terminal (/Applications/Utilities/Terminal.app), type in <em>python</em> and press Enter. </p>
+<div class="note">
+<p><em>Note:</em> If you install Python from python.org (and might have to if you want to get PyGame working), then you’ll also have access to IDLE on the Mac as well. It should be in the “/Applications/Python 2.7” folder.</p>
+</div>
+<p>If you did it correctly, you should see something like this: </p>
+<pre lang="text" class="hljs cs">Python <span class="hljs-number">2.7</span><span class="hljs-number">.3</span> (v2<span class="hljs-number">.7</span><span class="hljs-number">.3</span>:<span class="hljs-number">70274</span>d53c1dd, Apr  <span class="hljs-number">9</span> <span class="hljs-number">2012</span>, <span class="hljs-number">20</span>:<span class="hljs-number">52</span>:<span class="hljs-number">43</span>) 
+[GCC <span class="hljs-number">4.2</span><span class="hljs-number">.1</span> (Apple Inc. build <span class="hljs-number">5666</span>) (dot <span class="hljs-number">3</span>)] <span class="hljs-keyword">on</span> darwin
+Type <span class="hljs-string">"help"</span>, <span class="hljs-string">"copyright"</span>, <span class="hljs-string">"credits"</span> or <span class="hljs-string">"license"</span> <span class="hljs-keyword">for</span> more information.
+&gt;&gt;&gt; 
+</pre>
+<div class="note">
+<p><em>Note: </em>If you want to exit the Python prompt (the triple angle brackets, &gt;&gt;&gt;), you can either type <em>exit()</em> at the Python prompt and press Return or you can press Control+D.</p>
+</div>
+<p>Once you are at the Python prompt, to test if Python is correctly working, type in <em>print 1+1</em> and hit Enter/Return. It should print 2. You have just written your first Python program!</p>
+<p><img src="./Beginning Game Programming for Teens with Python_files/HGLbF.png" alt="" align="center"></p>
+<p>Now that you know Python is working correctly, you need to install PyGame in order to write a game using Python.</p>
+<p>PyGame is a Python library that makes writing games a lot easier! It provides functionality such as image handling and sound playback that you can easily incorporate into your game.</p>
+<p>Go <a href="http://www.pygame.org/download.shtml" sl-processed="1">here</a> and download the PyGame installer appropriate for your system. Make sure you download a Python 2.7 version.</p>
+<div class="note">
+<p><em>Note: </em>The PyGame installer from the link above will not work with the default Python from Apple that is installed on a Mac. You’ll need to download Python from python.org and install it in order to use PyGame. Or, you can install both Python and PyGame via <a href="http://www.macports.org/" sl-processed="1">MacPorts</a>.</p>
+</div>
+<p>To verify that you have PyGame installed properly, open IDLE or run Python via the Terminal and type in <em>import pygame</em> at the Python prompt. If this doesn’t result in any output, then you’re good. </p>
+<p>If, on the other hand, it outputs an error like what’s shown below, then PyGame is not installed.</p>
+<pre lang="text" class="hljs javascript">Python <span class="hljs-number">2.7</span><span class="hljs-number">.2</span> (<span class="hljs-keyword">default</span>, Jun <span class="hljs-number">20</span> <span class="hljs-number">2012</span>, <span class="hljs-number">16</span>:<span class="hljs-number">23</span>:<span class="hljs-number">33</span>) 
+[GCC <span class="hljs-number">4.2</span><span class="hljs-number">.1</span> Compatible Apple Clang <span class="hljs-number">4.0</span> (tags/Apple/clang<span class="hljs-number">-418.0</span><span class="hljs-number">.60</span>)] on darwin
+Type <span class="hljs-string">"help"</span>, <span class="hljs-string">"copyright"</span>, <span class="hljs-string">"credits"</span> or <span class="hljs-string">"license"</span> <span class="hljs-keyword">for</span> more information.
+&gt;&gt;&gt; <span class="hljs-keyword">import</span> pygame
+Traceback (most recent call last):
+  File <span class="hljs-string">"</span><stdin><span class="hljs-string">"</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> <module>
+ImportError: No <span class="hljs-built_in">module</span> named pygame
+&gt;&gt;&gt; 
+</module></stdin></pre>
+<p>If you get an error like this, post on the forums and I will help you get it working. </p>
+<h3>Running Python Code from File</h3>
+<p>While you can run short bits of Python code at the Python prompt, if you want to work on a bigger program (like a game), you probably want to save your code to a file so that you don’t have to type it in over and over again.</p>
+<p>There are several ways to run a Python program as a file. One way is to use a plain text editor like Notepad (Windows), or TextEdit (Mac). Open a new text file, type in your Python code (like <em>print 1+1</em>). Then save it as <em>XXX.py</em> (The XXX can be any descriptive file name). </p>
+<p>Then on Windows, double-click this file to run it. On Mac, open Terminal and type <em>python</em>, then drag the file that you saved onto the Terminal window and press Enter.</p>
+<p>The other way is to type in your code using the IDLE editor, which is what you’re going to do in this tutorial. To run idle, simply type <em>idle</em> from Terminal. Then choose File\New Window from the IDLE menu and you should have a text editor window where you can type in Python code. You can save your code changes via File\Save and even run the code via Run\Run Module (F5).</p>
+<p>Do note that the Run menu is only available if you have a file open in an editor window.</p>
+<h3>Adding the Game Resources</h3>
+<p>You are almost ready to create your game. But what’s a game without some great graphics and sound effects? I’ve put together all the graphics and sound effects you’ll need for your game into a ZIP archive. You can download it <a href="http://www.raywenderlich.com/downloads/BB_Resources.zip" sl-processed="1">here</a>.</p>
+<p>Once you’ve downloaded the file, create a folder for your game on your hard disk and extract the resources folder into that folder so that your game folder has a subfolder named <em>resources</em>, with the various resources grouped in additional folders inside it, like this:</p>
+<p><img src="./Beginning Game Programming for Teens with Python_files/NewImage.png" alt="Resources" title="Resources" border="0" width="700" height="259"></p>
+<p>You are now ready to begin creating Bunnies and Badgers. :]</p>
+<h2>Step 1: Hello Bunny</h2>
+<p>Run IDLE and open a new text editor window, as mentioned in the previous section. Type the following code into the editor window:</p>
+<pre lang="python" class="hljs bash"><span class="hljs-comment"># 1 - Import library</span>
+import pygame
+from pygame.locals import *
+
+<span class="hljs-comment"># 2 - Initialize the game</span>
+pygame.init()
+width, height = 640, 480
+screen=pygame.display.set_mode((width, height))
+
+<span class="hljs-comment"># 3 - Load images</span>
+player = pygame.image.load(<span class="hljs-string">"resources/images/dude.png"</span>)
+
+<span class="hljs-comment"># 4 - keep looping through</span>
+<span class="hljs-keyword">while</span> 1:
+    <span class="hljs-comment"># 5 - clear the screen before drawing it again</span>
+    screen.fill(0)
+    <span class="hljs-comment"># 6 - draw the screen elements</span>
+    screen.blit(player, (100,100))
+    <span class="hljs-comment"># 7 - update the screen</span>
+    pygame.display.flip()
+    <span class="hljs-comment"># 8 - loop through the events</span>
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-comment"># check if the event is the X button </span>
+        <span class="hljs-keyword">if</span> event.type==pygame.QUIT:
+            <span class="hljs-comment"># if it is quit the game</span>
+            pygame.quit() 
+            <span class="hljs-built_in">exit</span>(0) 
+</pre>
+<p>Save the file into your game folder (the one where the resources subfolder is) and name it <em>game.py</em>.</p>
+<p>Let’s go through the code section-by-section:</p>
+<ol>
+<li>Import the PyGame library. This allows you to use functions from the library in your program.</li>
+<li>Initialize PyGame and set up the display window.</li>
+<li>Load the image that you will use for the bunny.</li>
+<li>Keep looping over the following indented code.
+<div class="note">
+<p><em>Note: </em>Where other languages like Objective-C, Java or PHP use curly braces to show a block of code to be executed within a while loop or an if statement, Python uses indenting to identify code blocks. So proper indentation is very important in Python – keep that in mind. :]</p>
+</div>
+</li>
+<li>Fill the screen with black before you draw anything.</li>
+<li>Add the bunny image that you loaded to the screen at x=100 and y=100.</li>
+<li>Update the screen.</li>
+<li>Check for any new events and if there is one, and it is a quit command, exit the program.
+<div class="note">
+<p><em>Note: </em>According to the <a href="http://www.pygame.org/docs/ref/pygame.html" sl-processed="1">PyGame documentation</a>, you shouldn’t need to call <em>pygame.quit()</em> since the interpreter will automatically call it when the interpreter shuts down. However, at least on Mac OS, the game would hang on exit unless <em>pygame.quit()</em> was called.</p>
+</div>
+</li>
+</ol>
+<p>If you run the code now (via Run\Run Module in the Idle menu), you should see a screen similar to the one below:</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-1-2" rel="attachment wp-att-25466" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-1-391x320.png" alt="" title="Hello Bunny" width="391" height="320" class="size-medium wp-image-25466" srcset="https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-1-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-1-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-1.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<p>w00t the bunny is in the scene, and ready for action!</p>
+<p>But the game looks scary and lonely with the bunny just standing there on a black background. Time to prettify things a little bit. :]</p>
+<h2>Step 2: Add Scenery</h2>
+<p>Let’s start by adding a background to the game scene. This can be done with a couple more <em>screen.blit()</em> calls.</p>
+<p>At the end of section #3, after loading the player image, add the following code:</p>
+<pre lang="python" class="hljs javascript">grass = pygame.image.load(<span class="hljs-string">"resources/images/grass.png"</span>)
+castle = pygame.image.load(<span class="hljs-string">"resources/images/castle.png"</span>)
+</pre>
+<p>This loads the images and puts them into specific variables. Now they have to be drawn on screen. But if you check the grass image, you will notice that it won’t cover the entire screen area, which is 640 x 480. This means you have to tile the grass over the screen area to cover it completely.</p>
+<p>Add the following code to <em>game.py</em> at the beginning of section #6 (before the player is drawn on screen):</p>
+<pre lang="python" class="hljs javascript">    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(width/grass.get_width()+<span class="hljs-number">1</span>):
+        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(height/grass.get_height()+<span class="hljs-number">1</span>):
+            screen.blit(grass,(x*<span class="hljs-number">100</span>,y*<span class="hljs-number">100</span>))
+    screen.blit(castle,(<span class="hljs-number">0</span>,<span class="hljs-number">30</span>))
+    screen.blit(castle,(<span class="hljs-number">0</span>,<span class="hljs-number">135</span>))
+    screen.blit(castle,(<span class="hljs-number">0</span>,<span class="hljs-number">240</span>))
+    screen.blit(castle,(<span class="hljs-number">0</span>,<span class="hljs-number">345</span> ))
+</pre>
+<p>As you can see, the for statement loops through x first. Then, within that for loop, it loops through y and draws the grass at the x and y values generated by the for loops. The next couple of lines just draw the castles on the screen. </p>
+<p>If you run the program now, you should get something like this:</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-2-2" rel="attachment wp-att-25467" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-2-391x320.png" alt="" title="Add Scenery" width="391" height="320" class="size-medium wp-image-25467" srcset="https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-2-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-2-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-2.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<p>Much better – this is starting to look good! :]</p>
+<h2>Step 3: Make the Bunny Move</h2>
+<p>Next you need to add some actual gameplay elements, like making the bunny respond to key presses.</p>
+<p>To do that, first you’ll implement a good method of keeping track of which keys are being pressed at a given moment. You can do this simply by making an array of key states that holds the state of each key you want to use for the game.</p>
+<p>Add the following code to <em>game.py</em> at the end of section #2 (after you set the screen height and width):</p>
+<pre lang="python" class="hljs">keys = [False, False, False, False]
+playerpos=[100,100]
+</pre>
+<p>This code is pretty self-explanatory. The keys array keeps track of the keys being pressed in the following order: WASD. Each item in the array corresponds to one key – the first to W, the second to A and so on.</p>
+<p>The playerpos variable is where the program draws the player. Since the game will move the player to different positions, it’s easier to have a variable that contains the player position and then simply draw the player at that position.</p>
+<p>Now you need to modify the existing code for drawing the player to use the new <em>playerpos</em> variable. Change the following line in section #6:</p>
+<pre lang="python" class="hljs">    screen.blit(player, (100,100))
+</pre>
+<p>To:</p>
+<pre lang="python" class="hljs">    screen.blit(player, playerpos)
+</pre>
+<p>Next, update the keys array based on which keys are being pressed. PyGame makes detecting key presses easy by adding event.key functions. </p>
+<p>At the end of section #8, right after the block checking for event.type==pygame.QUIT, put this code (at the same indentation level as the pygame.QUIT if block):</p>
+<pre lang="python" class="hljs cs">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span>.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span>.key==K_w:
+                keys[<span class="hljs-number">0</span>]=True
+            elif <span class="hljs-keyword">event</span>.key==K_a:
+                keys[<span class="hljs-number">1</span>]=True
+            elif <span class="hljs-keyword">event</span>.key==K_s:
+                keys[<span class="hljs-number">2</span>]=True
+            elif <span class="hljs-keyword">event</span>.key==K_d:
+                keys[<span class="hljs-number">3</span>]=True
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span>.type == pygame.KEYUP:
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span>.key==pygame.K_w:
+                keys[<span class="hljs-number">0</span>]=False
+            elif <span class="hljs-keyword">event</span>.key==pygame.K_a:
+                keys[<span class="hljs-number">1</span>]=False
+            elif <span class="hljs-keyword">event</span>.key==pygame.K_s:
+                keys[<span class="hljs-number">2</span>]=False
+            elif <span class="hljs-keyword">event</span>.key==pygame.K_d:
+                keys[<span class="hljs-number">3</span>]=False
+</pre>
+<p>Wow! Those are a lot of lines of code. If you break it down into the if statements though, it’s not that complicated. </p>
+<p>First you check to see if a key is being pressed down or released. Then you check which key is being pressed or released, and if the key being pressed or released is one of the keys you’re using, you update the keys variable accordingly.</p>
+<p>Finally, you need to update the <em>playerpos</em> variable in response to the key presses. This is actually very simple. </p>
+<p>Add the following code to the end of game.py (with one indentation level, putting it at the same level as the for loop):</p>
+<pre lang="python" class="hljs bash">    <span class="hljs-comment"># 9 - Move player</span>
+    <span class="hljs-keyword">if</span> keys[0]:
+        playerpos[1]-=5
+    <span class="hljs-keyword">elif</span> keys[2]:
+        playerpos[1]+=5
+    <span class="hljs-keyword">if</span> keys[1]:
+        playerpos[0]-=5
+    <span class="hljs-keyword">elif</span> keys[3]:
+        playerpos[0]+=5
+</pre>
+<p>This code simply checks which of the keys are being pressed and adds or subtracts from the player’s x or y position (depending on the key pressed) to move the player. </p>
+<p>Run the game and you should get a player just like before. Try pressing WASD. Yay! It works.</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-3" rel="attachment wp-att-25468" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-3-391x320.png" alt="" title="Make the Bunny Move" width="391" height="320" class="size-medium wp-image-25468" srcset="https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-3-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-3-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-3.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<h2>Step 4: Turning the Bunny</h2>
+<p>Yes, your bunny now moves when you press keys but wouldn’t it be even cooler if you could use your mouse to rotate the bunny to face a direction of your choosing, so he’s not facing the same way all the time? It’s simple enough to implement using trigonometry.</p>
+<p>Take a look at the following illustration:</p>
+<p><img src="./Beginning Game Programming for Teens with Python_files/trig-lesson.png" alt="" title="atan2" width="365" height="309" class="size-full wp-image-24976"></p>
+<p>In the above image, if (5,3) is the position of the bunny and (2,4) is the current position of the mouse, you can find the rotation angle (z) by applying the atan2 trigonometric function to the difference in distances between the two points. Of course, once you know the rotation angle, you can simply rotate the bunny accordingly. :]</p>
+<p>If you’re a bit confused about this part, don’t worry – you can continue on anyway. But this is why you should pay attention in Math class! :] You’ll use this stuff all the time in game programming.</p>
+<p>Now you need to apply this concept to your game. To do this, you can use the PyGame <em>Surface.rotate(degrees)</em> function. Incidentally, keep in mind that the Z value is in radians. :[</p>
+<p>The atan2 function comes from the Python math library. So add this to the end of section #1 first:</p>
+<pre lang="python" class="hljs swift"><span class="hljs-keyword">import</span> math
+</pre>
+<p>Then, replace the last line in section #6 (the player.blit line) with the following code:</p>
+<pre lang="python" class="hljs cs">    <span class="hljs-meta"># 6.1 - Set player position and rotation</span>
+    position = pygame.mouse.get_pos()
+    angle = math.atan2(position[<span class="hljs-number">1</span>]-(playerpos[<span class="hljs-number">1</span>]+<span class="hljs-number">32</span>),position[<span class="hljs-number">0</span>]-(playerpos[<span class="hljs-number">0</span>]+<span class="hljs-number">26</span>))
+    playerrot = pygame.transform.rotate(player, <span class="hljs-number">360</span>-angle*<span class="hljs-number">57.29</span>)
+    playerpos1 = (playerpos[<span class="hljs-number">0</span>]-playerrot.get_rect().width/<span class="hljs-number">2</span>, playerpos[<span class="hljs-number">1</span>]-playerrot.get_rect().height/<span class="hljs-number">2</span>)
+    screen.blit(playerrot, playerpos1) 
+</pre>
+<p>Let’s go through the basic structure of the above code. First you get the mouse and player positions. Then you feed those into the atan2 function. After that, you convert the angle received from the atan2 function from radians to degrees (multiply radians by approximately 57.29 or 360/2π). </p>
+<p>Since the bunny will be rotated, its position will change. So now you calculate the new bunny position and display the bunny on screen.</p>
+<p>Run the game again. If you use just the WASD keys, then the game should behave exactly like before. But if you move your mouse, the bunny rotates too. Cool!</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-10" rel="attachment wp-att-28127" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-10-391x320.png" alt="" title="screenshot 10" width="391" height="320" class="aligncenter size-medium wp-image-28127" srcset="https://koenig-media.raywenderlich.com/uploads/2012/12/screenshot-10-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/12/screenshot-10-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/12/screenshot-10.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<h2>Step 5: Shoot, Bunny, Shoot!</h2>
+<p>Now that your bunny’s moving around, it’s time to add a little more action. :] How about letting the bunny shoot enemies using arrows? This is no mild-mannered rabbit!</p>
+<p>This step is a bit more complicated because you have to keep track of all the arrows, update them, rotate them, and delete them when they go off-screen. </p>
+<p>First of all, add the necessary variables to the end of the initialization section, section #2:</p>
+<pre lang="python" class="hljs">acc=[0,0]
+arrows=[]
+</pre>
+<p>The first variable keeps track of the player’s accuracy and the second array tracks all the arrows. The accuracy variable is essentially a list of the number of shots fired and the number of badgers hit. Later, we will be using this information to calculate an accuracy percentage.</p>
+<p>Next, load the arrow image at the end of section #3:</p>
+<pre lang="python" class="hljs javascript">arrow = pygame.image.load(<span class="hljs-string">"resources/images/bullet.png"</span>)
+</pre>
+<p>Now when a user clicks the mouse, an arrow needs to fire. Add the following to the end of section #8 as a new event handler:</p>
+<pre lang="python" class="hljs cs">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span>.type==pygame.MOUSEBUTTONDOWN:
+            position=pygame.mouse.get_pos()
+            acc[<span class="hljs-number">1</span>]+=<span class="hljs-number">1</span>
+            arrows.append([math.atan2(position[<span class="hljs-number">1</span>]-(playerpos1[<span class="hljs-number">1</span>]+<span class="hljs-number">32</span>),position[<span class="hljs-number">0</span>]-(playerpos1[<span class="hljs-number">0</span>]+<span class="hljs-number">26</span>)),playerpos1[<span class="hljs-number">0</span>]+<span class="hljs-number">32</span>,playerpos1[<span class="hljs-number">1</span>]+<span class="hljs-number">32</span>])
+</pre>
+<p>This code checks if the mouse was clicked and if it was, it gets the mouse position and calculates the arrow rotation based on the rotated player position and the cursor position. This rotation value is stored in the <em>arrows</em> array.</p>
+<p>Next, you have to actually draw the arrows on screen. Add the following code right after section #6.1:</p>
+<pre lang="python" class="hljs cs">    <span class="hljs-meta"># 6.2 - Draw arrows</span>
+    <span class="hljs-keyword">for</span> bullet <span class="hljs-keyword">in</span> arrows:
+        index=<span class="hljs-number">0</span>
+        velx=math.cos(bullet[<span class="hljs-number">0</span>])*<span class="hljs-number">10</span>
+        vely=math.sin(bullet[<span class="hljs-number">0</span>])*<span class="hljs-number">10</span>
+        bullet[<span class="hljs-number">1</span>]+=velx
+        bullet[<span class="hljs-number">2</span>]+=vely
+        <span class="hljs-keyword">if</span> bullet[<span class="hljs-number">1</span>]&lt;<span class="hljs-number">-64</span> or bullet[<span class="hljs-number">1</span>]&gt;<span class="hljs-number">640</span> or bullet[<span class="hljs-number">2</span>]&lt;<span class="hljs-number">-64</span> or bullet[<span class="hljs-number">2</span>]&gt;<span class="hljs-number">480</span>:
+            arrows.pop(index)
+        index+=<span class="hljs-number">1</span>
+        <span class="hljs-keyword">for</span> projectile <span class="hljs-keyword">in</span> arrows:
+            arrow1 = pygame.transform.rotate(arrow, <span class="hljs-number">360</span>-projectile[<span class="hljs-number">0</span>]*<span class="hljs-number">57.29</span>)
+            screen.blit(arrow1, (projectile[<span class="hljs-number">1</span>], projectile[<span class="hljs-number">2</span>]))
+</pre>
+<p>The <em>vely</em> and <em>velx</em> values are calculated using basic trigonometry. 10 is the speed of the arrows. The if statement just checks if the bullet is out of bounds and if it is, it deletes the arrow. The second for statement loops through the arrows and draws them with the correct rotation. </p>
+<p>Try and run the program. You should have a bunny that shoots arrows when you click the mouse! :D</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-5" rel="attachment wp-att-25470" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-5-391x320.png" alt="" title="Shoot Bunny Shoot" width="391" height="320" class="size-medium wp-image-25470" srcset="https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-5-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-5-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-5.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<h2>Step 6: Take Up Arms! Badgers!</h2>
+<p>OK, you have a castle and you have a hero who can move and shoot. So what’s missing? Enemies who attack the castle that the hero can shoot at!</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/badger" rel="attachment wp-att-27840" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/Badger-320x320.jpg" alt="" title="Badger" width="320" height="320" class="aligncenter size-medium wp-image-27840" srcset="https://koenig-media.raywenderlich.com/uploads/2012/12/Badger-320x320.jpg 320w, https://koenig-media.raywenderlich.com/uploads/2012/12/Badger-250x250.jpg 250w, https://koenig-media.raywenderlich.com/uploads/2012/12/Badger.jpg 400w" sizes="(max-width: 320px) 100vw, 320px"></a></p>
+<p>In this step, you’ll create randomly generated badgers that run at the castle. There will be more and more badgers as the game progresses. So, let’s make a list of what you’ll need it to do.</p>
+<ol>
+<li>Add bad guys to a list an array.</li>
+<li>Update the bad guy array each frame and check if they are off screen.</li>
+<li>Show the bad guys.</li>
+</ol>
+<p>Easy, right? :]</p>
+<p>First, add the following code to the end of section #2:</p>
+<pre lang="python" class="hljs">badtimer=100
+badtimer1=0
+badguys=[[640,100]]
+healthvalue=194
+</pre>
+<p>The above sets up a timer (as well as a few other values) so that the game adds a new badger after some time has elapsed. You decrease the badtimer every frame until it is zero and then you spawn a new badger. </p>
+<p>Now add the following to the end of section #3:</p>
+<pre lang="python" class="hljs javascript">badguyimg1 = pygame.image.load(<span class="hljs-string">"resources/images/badguy.png"</span>)
+badguyimg=badguyimg1
+</pre>
+<p>The first line above is similar to all the previous image-loading code. The second line sets up a copy of the image so that you can animate the bad guy much more easily.</p>
+<p>Next, you have to update and show the bad guys. Add this code right after section #6.2:</p>
+<pre lang="python" class="hljs cs">    <span class="hljs-meta"># 6.3 - Draw badgers</span>
+    <span class="hljs-keyword">if</span> badtimer==<span class="hljs-number">0</span>:
+        badguys.append([<span class="hljs-number">640</span>, random.randint(<span class="hljs-number">50</span>,<span class="hljs-number">430</span>)])
+        badtimer=<span class="hljs-number">100</span>-(badtimer1*<span class="hljs-number">2</span>)
+        <span class="hljs-keyword">if</span> badtimer1&gt;=<span class="hljs-number">35</span>:
+            badtimer1=<span class="hljs-number">35</span>
+        <span class="hljs-keyword">else</span>:
+            badtimer1+=<span class="hljs-number">5</span>
+    index=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> badguy <span class="hljs-keyword">in</span> badguys:
+        <span class="hljs-keyword">if</span> badguy[<span class="hljs-number">0</span>]&lt;<span class="hljs-number">-64</span>:
+            badguys.pop(index)
+        badguy[<span class="hljs-number">0</span>]-=<span class="hljs-number">7</span>
+        index+=<span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> badguy <span class="hljs-keyword">in</span> badguys:
+        screen.blit(badguyimg, badguy)
+</pre>
+<p>Lots of code to go over. :] The first line checks if <em>badtimer</em> is zero and if it is, creates a badger and sets <em>badtimer</em> up again based on how many times <em>badtimer</em> has run so far. The first for loop updates the x position of the badger, checks if the badger is off the screen, and removes the badger if it is offscreen. The second for loop draws all of the badgers.</p>
+<p>In order to use the random function in the above code, you also need to import the random library. So add the following to the end of section #1:</p>
+<pre lang="python" class="hljs swift"><span class="hljs-keyword">import</span> random
+</pre>
+<p>Finally, add this line right after the while statement (section #4) to decrement the value of <em>badtimer</em> for each frame:</p>
+<pre lang="python" class="hljs">badtimer-=1
+</pre>
+<p>Try all of this code out by running the game. Now you should start seeing some real gameplay – you can shoot, move, turn, and badgers try to run at you. </p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screen-shot-2012-12-15-at-10-16-43-pm" rel="attachment wp-att-28128" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/Screen-Shot-2012-12-15-at-10.16.43-PM-391x320.png" alt="" title="Screen Shot 2012-12-15 at 10.16.43 PM" width="391" height="320" class="aligncenter size-medium wp-image-28128" srcset="https://koenig-media.raywenderlich.com/uploads/2012/12/Screen-Shot-2012-12-15-at-10.16.43-PM-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/12/Screen-Shot-2012-12-15-at-10.16.43-PM-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/12/Screen-Shot-2012-12-15-at-10.16.43-PM.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<p>But wait! Why aren't the badgers blowing up the castle? Let's quickly add that in...</p>
+<p>Add this code right before the <em>index+=1</em> on the first for loop in section #6.3:</p>
+<pre lang="python" class="hljs cs">        <span class="hljs-meta"># 6.3.1 - Attack castle</span>
+        badrect=pygame.Rect(badguyimg.get_rect())
+        badrect.top=badguy[<span class="hljs-number">1</span>]
+        badrect.left=badguy[<span class="hljs-number">0</span>]
+        <span class="hljs-keyword">if</span> badrect.left&lt;<span class="hljs-number">64</span>:
+            healthvalue -= random.randint(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>)
+            badguys.pop(index)
+        <span class="hljs-meta"># 6.3.3 - Next bad guy</span>
+</pre>
+<p>This code is fairly simple. If the badger's x value is less than 64 to the right, then delete that bad guy and decrease the game health value by a random value between 5 and 20. (Later, you will display the current health value on screen.) </p>
+<p>If you build and run the program, you should get a bunch of attacking badgers who vanish when they hit the castle. Although you cannot see it, the badgers are actually lowering your health.</p>
+<p><a href="./Beginning Game Programming for Teens with Python_files/Screen-Shot-2012-12-18-at-6.00.31-PM.png" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/Screen-Shot-2012-12-18-at-6.00.31-PM.png" alt="" title="Screen Shot 2012-12-18 at 6.00.31 PM" width="638" height="500" class="alignnone size-full wp-image-28258" srcset="https://koenig-media.raywenderlich.com/uploads/2012/12/Screen-Shot-2012-12-18-at-6.00.31-PM.png 638w, https://koenig-media.raywenderlich.com/uploads/2012/12/Screen-Shot-2012-12-18-at-6.00.31-PM-408x320.png 408w" sizes="(max-width: 638px) 100vw, 638px"></a></p>
+<h2>Step 7: Collisions with Badgers and Arrows</h2>
+<p>The badgers are attacking your castle but your arrows have no effect on them! How's a bunny supposed to defend his home?</p>
+<p>Time to set the arrows to kill the badgers so you can safeguard your castle and win the game! Basically, you have to loop through all of the bad guys and inside each of those loops, you have to loop through all of the arrows and check if they collide. If they do, then delete the badger, delete the arrow, and add one to your accuracy ratio.</p>
+<p>Right after section #6.3.1, add this:</p>
+<pre lang="python" class="hljs swift">        #<span class="hljs-number">6.3</span>.<span class="hljs-number">2</span> - <span class="hljs-type">Check</span> <span class="hljs-keyword">for</span> collisions
+        index1=<span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> bullet <span class="hljs-keyword">in</span> arrows:
+            bullrect=pygame.<span class="hljs-type">Rect</span>(arrow.get_rect())
+            bullrect.<span class="hljs-keyword">left</span>=bullet[<span class="hljs-number">1</span>]
+            bullrect.top=bullet[<span class="hljs-number">2</span>]
+            <span class="hljs-keyword">if</span> badrect.colliderect(bullrect):
+                acc[<span class="hljs-number">0</span>]+=<span class="hljs-number">1</span>
+                badguys.pop(index)
+                arrows.pop(index1)
+            index1+=<span class="hljs-number">1</span>
+</pre>
+<p>There's only one important thing to note in this code. The if statement is a built-in PyGame function that checks if two rectangles intersect. The other couple of lines just do what I explained above. </p>
+<p>If you run the program, you should finally be able to shoot and kill the badgers.</p>
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2012/12/Screen-Shot-2012-12-18-at-6.02.22-PM-2.png" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/Swcreen-Shot-2012-12-18-at-6.02.22-PM-2-480x271.png" alt="" title="Screen Shot 2012-12-18 at 6.02.22 PM (2)" width="480" height="271" class="alignnone size-medium wp-image-28259"></a></p>
+<h2>Step 8: Add a HUD with Health Meter and Clock</h2>
+<p>The game's progressing pretty well. You have your attackers, and you have your defender. Now all you need is a way to keep score and to show how well the bunny is doing. </p>
+<p>The easiest way to do this is to add a HUD (Heads Up Display) that shows the current health level of the castle. You can also add a clock to show how long the castle has survived.</p>
+<p>First add the clock. Add the following code right before the beginning of section #7:</p>
+<pre lang="python" class="hljs cs">    <span class="hljs-meta"># 6.4 - Draw clock</span>
+    font = pygame.font.Font(None, <span class="hljs-number">24</span>)
+    survivedtext = font.render(str((<span class="hljs-number">90000</span>-pygame.time.get_ticks())/<span class="hljs-number">60000</span>)+<span class="hljs-string">":"</span>+str((<span class="hljs-number">90000</span>-pygame.time.get_ticks())/<span class="hljs-number">1000</span>%<span class="hljs-number">60</span>).zfill(<span class="hljs-number">2</span>), True, (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    textRect = survivedtext.get_rect()
+    textRect.topright=[<span class="hljs-number">635</span>,<span class="hljs-number">5</span>]
+    screen.blit(survivedtext, textRect)
+</pre>
+<p>The above code simply creates a new font using the default PyGame font set to size 24. Then that font is used to render the text of the time onto a surface. After that, the text is positioned and drawn onscreen.</p>
+<p>Next add the health bar. But before drawing the health bar, you need to load the images for the bar. Add the following code to the end of section #3:</p>
+<pre lang="python" class="hljs javascript">healthbar = pygame.image.load(<span class="hljs-string">"resources/images/healthbar.png"</span>)
+health = pygame.image.load(<span class="hljs-string">"resources/images/health.png"</span>)
+</pre>
+<p>The first is the red image used for the full health bar. The second is the green image used to show the current health level.</p>
+<p>Now add the following code right after section #6.4 (which you just added) to draw the health bar on screen:</p>
+<pre lang="python" class="hljs cs">    <span class="hljs-meta"># 6.5 - Draw health bar</span>
+    screen.blit(healthbar, (<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+    <span class="hljs-function"><span class="hljs-keyword">for</span> health1 <span class="hljs-keyword">in</span> <span class="hljs-title">range</span>(<span class="hljs-params">healthvalue</span>):
+        screen.<span class="hljs-title">blit</span>(<span class="hljs-params">health, (health1+<span class="hljs-number">8</span>,<span class="hljs-number">8</span></span>))
+</span></pre>
+<p>The code first draws the all-red health bar. Then it draws a certain amount of green over the bar, according to how much life the castle has remaining. </p>
+<p>If you build and run the program, you should have a timer and a health bar.</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-8" rel="attachment wp-att-25472" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-8-391x320.png" alt="" title="HUD" width="391" height="320" class="size-medium wp-image-25472" srcset="https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-8-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-8-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-8.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<h2>Step 9: Win or Lose</h2>
+<p>But what's this? If you play for long enough, even if your health goes down to zero, the game still continues! Not just that, you can continue to shoot at the badgers, too. That isn't going to work, now is it? You need some sort of a win/lose scenario to make the game worth playing.</p>
+<p>So let's add the win and lose condition as well as the win or lose screen. :] You do this by exiting out of the main loop and going into a win/lose loop. In the win/lose loop, you have to figure out if the user won or lost and display the screen accordingly. </p>
+<p>Here is a basic outline of the win/lose scenarios:</p>
+<p>If time is up (90000 ms or 90 seconds) then:</p>
+<ul>
+<li>Stop running the game</li>
+<li>Set outcome of game to 1 or win</li>
+</ul>
+<p>If the castle is destroyed then:</p>
+<ul>
+<li>Stop running game</li>
+<li>Set outcome of game to 1 or win</li>
+</ul>
+<p>Calculate the accuracy either way.</p>
+<div class="note">
+<p><em>Note: </em>The acc[0]*1.0 is just converting acc[0] to a float. If you do not do this, the division operand will return an integer like 1 or 2 instead of a float like 1.5</p>
+</div>
+<p>Add these lines to the end of <em>game.py</em>:</p>
+<pre lang="python" class="hljs cs">    <span class="hljs-meta">#10 - Win/Lose check</span>
+    <span class="hljs-keyword">if</span> pygame.time.get_ticks()&gt;=<span class="hljs-number">90000</span>:
+        running=<span class="hljs-number">0</span>
+        exitcode=<span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> healthvalue&lt;=<span class="hljs-number">0</span>:
+        running=<span class="hljs-number">0</span>
+        exitcode=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">if</span> acc[<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>:
+        accuracy=acc[<span class="hljs-number">0</span>]*<span class="hljs-number">1.0</span>/acc[<span class="hljs-number">1</span>]*<span class="hljs-number">100</span>
+    <span class="hljs-keyword">else</span>:
+        accuracy=<span class="hljs-number">0</span>
+<span class="hljs-meta"># 11 - Win/lose display        </span>
+<span class="hljs-keyword">if</span> exitcode==<span class="hljs-number">0</span>:
+    pygame.font.init()
+    font = pygame.font.Font(None, <span class="hljs-number">24</span>)
+    text = font.render(<span class="hljs-string">"Accuracy: "</span>+str(accuracy)+<span class="hljs-string">"%"</span>, True, (<span class="hljs-number">255</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    textRect = text.get_rect()
+    textRect.centerx = screen.get_rect().centerx
+    textRect.centery = screen.get_rect().centery+<span class="hljs-number">24</span>
+    screen.blit(gameover, (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    screen.blit(text, textRect)
+<span class="hljs-keyword">else</span>:
+    pygame.font.init()
+    font = pygame.font.Font(None, <span class="hljs-number">24</span>)
+    text = font.render(<span class="hljs-string">"Accuracy: "</span>+str(accuracy)+<span class="hljs-string">"%"</span>, True, (<span class="hljs-number">0</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0</span>))
+    textRect = text.get_rect()
+    textRect.centerx = screen.get_rect().centerx
+    textRect.centery = screen.get_rect().centery+<span class="hljs-number">24</span>
+    screen.blit(youwin, (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    screen.blit(text, textRect)
+<span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:
+    <span class="hljs-keyword">for</span> <span class="hljs-keyword">event</span> <span class="hljs-keyword">in</span> pygame.<span class="hljs-keyword">event</span>.<span class="hljs-keyword">get</span>():
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span>.type == pygame.QUIT:
+            pygame.quit()
+            exit(<span class="hljs-number">0</span>)
+    pygame.display.flip()
+</pre>
+<p>This is the longest bit of code yet! But it’s not that complicated.</p>
+<p>The first if statement checks if the time is up. The second one checks if the castle is destroyed. The third one calculates your accuracy ratio. After that, a quick if statement checks if you won or lost and displays the correct image. </p>
+<p>Of course, if you want to display images for the win and lose screens, then those images have to be loaded first. So add the following code to the end of section #3:</p>
+<pre lang="python" class="hljs javascript">gameover = pygame.image.load(<span class="hljs-string">"resources/images/gameover.png"</span>)
+youwin = pygame.image.load(<span class="hljs-string">"resources/images/youwin.png"</span>)
+</pre>
+<p>One more quick thing. Change section #4 from:</p>
+<pre lang="python" class="hljs cs"><span class="hljs-meta"># 4 - keep looping through</span>
+<span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:
+    badtimer-=<span class="hljs-number">1</span>
+</pre>
+<p>To:</p>
+<pre lang="python" class="hljs cs"><span class="hljs-meta"># 4 - keep looping through</span>
+running = <span class="hljs-number">1</span>
+exitcode = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> running:
+    badtimer-=<span class="hljs-number">1</span>
+</pre>
+<p>The running variable keeps track of if the game is over and the exit code variable keeps track of whether the player won or lost.</p>
+<p>Run the game again and now you can either triumph or die trying! Cool. :]</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-9" rel="attachment wp-att-25473" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/screenshot-9-391x320.png" alt="" title="Game Over!" width="391" height="320" class="size-medium wp-image-25473" srcset="https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-9-391x320.png 391w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-9-612x500.png 612w, https://koenig-media.raywenderlich.com/uploads/2012/11/screenshot-9.png 754w" sizes="(max-width: 391px) 100vw, 391px"></a></p>
+<h2>Step 10: Gratuitous Music and Sound Effects!</h2>
+<p>The game's looking pretty good but how does it sound? It's a bit quiet, isn't it? Adding some sound effects can change the whole feel of a game.</p>
+<p>PyGame makes loading and playing sounds super simple. First, you have to initialize the mixer by adding this at the end of section #2:</p>
+<pre lang="python" class="hljs swift">pygame.mixer.<span class="hljs-keyword">init</span>()
+</pre>
+<p>Then load the sounds and set the volume level at the end of section #3:</p>
+<pre lang="python" class="hljs cs"><span class="hljs-meta"># 3.1 - Load audio</span>
+hit = pygame.mixer.Sound(<span class="hljs-string">"resources/audio/explode.wav"</span>)
+enemy = pygame.mixer.Sound(<span class="hljs-string">"resources/audio/enemy.wav"</span>)
+shoot = pygame.mixer.Sound(<span class="hljs-string">"resources/audio/shoot.wav"</span>)
+hit.set_volume(<span class="hljs-number">0.05</span>)
+enemy.set_volume(<span class="hljs-number">0.05</span>)
+shoot.set_volume(<span class="hljs-number">0.05</span>)
+pygame.mixer.music.load(<span class="hljs-string">'resources/audio/moonlight.wav'</span>)
+pygame.mixer.music.play(<span class="hljs-number">-1</span>, <span class="hljs-number">0.0</span>)
+pygame.mixer.music.set_volume(<span class="hljs-number">0.25</span>)
+</pre>
+<p>Most of the above code is simply loading the audio files and configuring the audio volume levels. But pay attention to the pygame.mixer.music.load line – that line loads the background music for the game and the next line sets the background music to repeat forever.</p>
+<p>That takes care of the audio configuration. :] Now all you need to do is to play the various sound effects as needed. Do that as per the directions in the comments for the code below:</p>
+<pre lang="python" class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> section 6.3.1 after <span class="hljs-keyword">if</span> badrect.left&lt;64:</span>
+hit.play()
+<span class="hljs-meta">#</span><span class="bash"> section 6.3.2 after <span class="hljs-keyword">if</span> badrect.colliderect(bullrect):</span>
+enemy.play()
+<span class="hljs-meta">#</span><span class="bash"> section 8, after <span class="hljs-keyword">if</span> event.type==pygame.MOUSEBUTTONDOWN:</span>
+shoot.play()
+</pre>
+<p>Run the game one more time and you'll notice that you now have background music and sound effects for collisions and shooting. The game feels that much more alive! :]</p>
+<h2>Where To Go From Here?</h2><div class="inline-video-ad" id="sub-banner-inline">
+              <div class="inline-video-ad-wrapper">
+                <a href="https://videos.raywenderlich.com/courses" sl-processed="1">
+                  <div class="col-wrapper">
+                    <div class="col">
+                      <img src="./Beginning Game Programming for Teens with Python_files/video-yeti@2x.png" alt="yeti holding videos">
+                    </div>
+                    <div class="col large-col">
+                      <span>Want to learn even faster? Save time with our <span>video courses</span></span>
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+<p>You should be proud of yourself: you have just finished creating a fun game packed with music, sound effects, a killer rabbit, kamikaze badgers and more. I told you you could do it! :]</p>
+<p>You can download the final source code for the game <a href="http://www.raywenderlich.com/downloads/BB_FinalGame.zip" sl-processed="1">here</a>. </p>
+<p>At this point, feel free to extend this game into your own creation! Maybe try replacing the art with your own drawings, or adding different weapons or types of monsters into the game!</p>
+<p>Do you have any questions or comments about what you’ve done in this tutorial? If so, join the discussion in the forums! I would love to hear from you.</p>
+<p><img src="./Beginning Game Programming for Teens with Python_files/JulianMeyer.jpg" class="photo alignleft"><br>
+<i>This is a post by Tutorial Team Member <a href="https://www.raywenderlich.com/?page_id=9#julianmeyer" sl-processed="1">Julian Meyer</a>, a 13-year-old python developer. </i></p>
+	
+        </div>
+
+                    
+            <script>
+              jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
+                return function (elem) {
+                  return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;        
+                };
+              });
+              jQuery(document).ready(function() {
+                var finalHeader = jQuery(".content-wrapper h2:icontains('where to go from here')");
+                if (finalHeader.length === 0) {
+                  finalHeader = jQuery(".content-wrapper h2:last");
+                }
+                if (finalHeader.length === 0) {
+                  return;
+                }
+                var inlineAd = jQuery('#sub-banner-inline');
+                finalHeader.after(inlineAd);
+              });
+            </script>
+                <footer>
+          <div class="social-links" style="border-bottom: none;">
+            <ul>
+              <li class="twitter" style="float: left;"><div id="tweetbutton24252m" class="tw_button" style="margin-bottom:10px;"><a href="http://twitter.com/share?url=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&amp;via=rwenderlich&amp;text=Beginning%20Game%20Programming%20for%20Teens%20with%20Python&amp;related=jmeyer2k&amp;lang=en&amp;count=horizontal&amp;counturl=https%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python" class="twitter-share-button" style="width:55px;height:22px;background:transparent url(&#39;https://koenig-assets.raywenderlich.com/wp-content/plugins/wp-tweet-button/tweetn.png&#39;) no-repeat  0 0;text-align:left;text-indent:-9999px;display:block;" sl-processed="1">Tweet</a></div></li>              <li class="facebook iframe-link" style="position: relative;top: 0px;left: 11px;display: block; float: left;">
+                <iframe src="./Beginning Game Programming for Teens with Python_files/like(1).html" allowtransparency="true" frameborder="0" scrolling="no" style="width: 74px; height: 20px;"></iframe>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </article>
+      <div id="author-information" class="clearfix">
+        <img src="./Beginning Game Programming for Teens with Python_files/arrow@2x.png" width="40" height="21" id="arrow">
+                  <div class="author-photo">
+            <img src="./Beginning Game Programming for Teens with Python_files/rw-logo_250.png" width="100" height="100">          </div>
+          <div class="author-meta">
+            <a href="https://www.raywenderlich.com/author/jmeyer" title="Posts by Julian Meyer" rel="author" sl-processed="1">Julian Meyer</a>            <p class="bio">Julian Meyer is a 13-year-old python programmer from Northern California. He has programmed <a href="http://pixelbuild.blogspot.com/" sl-processed="1">PixelBuild</a>, a simple block-building game and has his own blog about programming, arduino, and music <a href="http://julianscode.com/" sl-processed="1">here</a>.</p>	
+          </div>
+                      <ul class="follow-links">
+              <li class="twitter"><a href="http://www.twitter.com/jmeyer2k" target="_block" sl-processed="1">Follow Julian on Twitter</a></li>
+            </ul>
+                </div>
+              <section id="comments">
+                  <div class="excerpt" style="display:none">This is a post by Tutorial Team Member Julian Meyer, a 13-year-old python developer. You can find him on Google+ and Twitter. Have you ever wondered how video games are created? It’s not as complicated as you might think! In this tutorial, you’ll create a simple game called Bunnies and Badgers, where the hero, the […]</div>
+        <div id="discourse-comments" style="padding:10px 30px 30px 30px"><iframe src="./Beginning Game Programming for Teens with Python_files/comments.html" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="6866px"></iframe></div>
+        ​        <script type="text/javascript">
+            DiscourseEmbed = { discourseUrl: "https://forums.raywenderlich.com/",
+                               discourseEmbedUrl: "https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python",
+                               discourseUserName: "jmeyer"};
+            (function() {
+              var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+              d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+            })();
+        </script>
+      
+
+        </section>                            
+          </div>
+  </div>
+</div>
+<section id="secondary">
+	<h1 id="other-items-of-interest">Other Items of Interest</h1>
+	<section id="video-subscription-ad" class="rw-module">
+		<a href="https://videos.raywenderlich.com/courses" id="sub-banner-sidebar" sl-processed="1">
+			<div class="coin-holder">
+				<img src="./Beginning Game Programming for Teens with Python_files/subscription-coin-bg-3@2x.png" class="background-coin" alt="">
+				<img src="./Beginning Game Programming for Teens with Python_files/subscription-coin-bg-2@2x.png" class="background-coin" alt="">
+				<img src="./Beginning Game Programming for Teens with Python_files/subscription-coin-bg-1@2x.png" class="background-coin" alt="">
+				<img src="./Beginning Game Programming for Teens with Python_files/subscription-coin-base@2x.png" alt="">
+			</div>
+			<h2><span>Save time.</span><br>Learn more with our video courses.</h2>
+			<button>Get Started!</button>
+		</a>
+	</section>
+	<section id="newsletter-signup" class="rw-module">
+		<header>
+			<h1>raywenderlich.com Weekly</h1>
+		</header>
+		<div>
+			<img src="./Beginning Game Programming for Teens with Python_files/ia_tilted@2x.png" width="109" height="139">
+			<p>Sign up to receive the latest tutorials from raywenderlich.com each week, and receive a <em>free epic-length tutorial</em> as a bonus!</p>
+			<img src="https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python">
+			<form novalidate="" target="_blank" class="validate" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form" method="post" action="https://raywenderlich.us1.list-manage.com/subscribe/post?u=1bc8e630b1599df629818e59b&amp;id=83b6edc87f">
+				<input type="text" id="mce-NAME" class="required" name="NAME" value="" placeholder="Your full name">
+				<input type="email" id="mce-EMAIL" class="required email" name="EMAIL" value="" placeholder="Your best email">
+				<input type="submit" class="button" id="mc-embedded-subscribe" name="subscribe" value="Sign Up!">
+			</form>
+		</div>
+	</section>
+	<section id="site-ads">
+		<h1>Advertise with Us!</h1>
+      <div id="bsap_1274837" class="bsarocks bsap_39fcef7ed4520883d78f129c33995fd2"></div>
+      <!-- End BuySellAds Zone Code -->
+
+      <!-- BuySellAds.com Zone Code -->
+      <div id="smallads">
+      	<div id="bsap_1260352" class="bsarocks bsap_39fcef7ed4520883d78f129c33995fd2 clearfix"></div>
+      	<div style="clear:both"></div>
+      </div>
+      <div id="razeware_ads">
+      	<a href="http://pragmaconference.com/" target="_blank" class="razewareads" sl-processed="1"><img src="https://koenig-assets.raywenderlich.com/wp-content/themes/raywenderlich/images/ads/PragmaConf16_banner_125x125.png" alt="PragmaConf 2016" width="125" height="125" style="margin-left: 15px; display: none !important;"></a>
+        <a href="http://www.fivepackcreative.com/alt-u/" target="_blank" class="razewareads" sl-processed="1"><img src="https://koenig-assets.raywenderlich.com/wp-content/themes/raywenderlich/images/ads/altu.png" alt="Come check out Alt U" width="125" height="125" style="margin-left: 15px; display: none !important;"></a>
+      </div>
+
+      <!-- End BuySellAds.com Zone Code -->
+      <a href="http://www.raywenderlich.com/advertise" class="rw-button2" id="advertise-with-us" sl-processed="1">Advertise Here!</a>
+	</section>
+
+	<section id="our-books" class="rw-module">
+		<header>
+			<h1>Our Books</h1>
+		</header>
+		<div>
+			<ul class="books">
+				<li>
+					<a href="https://store.raywenderlich.com/products/ios-apprentice" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/ia1234@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/tvos-apprentice" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/tvt@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/unity-games-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/ua@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/watchos-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/w2t@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/swift-apprentice" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/sa@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/core-data-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/cdt@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/3d-apple-games-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/igt2@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/ios-10-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/i10t@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/ios-animations-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/iat@2x.png" width="110" height="142">
+					</a>
+				</li>
+				<li>
+					<a href="https://store.raywenderlich.com/products/2d-apple-games-by-tutorials" sl-processed="1">
+						<img src="./Beginning Game Programming for Teens with Python_files/igt1@2x.png" width="110" height="142">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section id="tutorial-team" class="rw-module">
+		<header>
+			<h1>Our Team</h1>
+		</header>
+		<div>
+			<h2>Video Team</h2><ul><li><a href="https://www.raywenderlich.com/about#tmitra" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/380380c628716a259a768acc7968345d" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#eamer" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/3524ba5c9815a021568e477fe70bdd1b" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#mpringle" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/4172b0c9cc00ea2075256f8e2540576f" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_video-team" sl-processed="1">19 total!</a></p><h2>Swift Team</h2><ul><li><a href="https://www.raywenderlich.com/about#rfix" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/2af8daf170a3ed693e577a9471ea1f10" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#ekerber" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/d02acb07c90fe0670fc929f8e928ee42" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#cpupăză" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/67544fd5193f9e55cc3bcd990fabd13c" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_tut-swift" sl-processed="1">15 total!</a></p><h2>iOS Team</h2><ul><li><a href="https://www.raywenderlich.com/about#" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/rw-logo_250.png" width="100" height="100"></a></li><li><a href="https://www.raywenderlich.com/about#rkliffer" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/527e7ecd819ffbd2ceab6f92cff989ef" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#rturton" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/75bc42fdcce95e26e5b3b60bbed4182f" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_tut-ios" sl-processed="1">34 total!</a></p><h2>Android Team</h2><ul><li><a href="https://www.raywenderlich.com/about#vsharma" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/abbd3b3e6215b17318c3e41b268a49e2" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#gafful" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/1aa39383ceadcb271d1591ee3af4cb86" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#jnocentini" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/173c031b8555fe85f2e967059d888caa" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_tut-android" sl-processed="1">15 total!</a></p><h2>macOS Team</h2><ul><li><a href="https://www.raywenderlich.com/about#egarcia" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/e38a6a0482e5e6e2b5ba3c16d9bc3f6a" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#esoto" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/6b7251e90b207b31d9932898378249cb" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#jgundersen" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/e468f215dc59cf228c8c761af231ea2b" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_tut-macos" sl-processed="1">11 total!</a></p><h2>Apple Game Frameworks Team</h2><ul><li><a href="https://www.raywenderlich.com/about#jcepeda" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/76a9ddbe957945013cece247a9864a88" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#cbegbie" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/bfe2a965cd6136b9e2b485c959a57aff" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#bbroom" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/72ddd6509156a7dd3c301b87a46c5219" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_tut-apple-game-frameworks" sl-processed="1">12 total!</a></p><h2>Unity Team</h2><ul><li><a href="https://www.raywenderlich.com/about#mplaczek" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/1ea09789220d27317a459bad2167a1ff" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#bmoakley" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/184e7fed489d4a5552e1d34df58fc65f" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#mberg" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/c6ebf2108413dc332fa890918297b1a7" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_tut-unity" sl-processed="1">11 total!</a></p><h2>Articles Team</h2><ul><li><a href="https://www.raywenderlich.com/about#bmorefield" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/37e2116492ac1e65feb7a9ede8a7ebc2" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#prea" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/6835d94b4b00ce39ca39021386f7e1a1" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#ttran" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/e6b0f74f6b0294fed6edb668acab8c2c" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_article" sl-processed="1">12 total!</a></p><h2>Resident Authors Team</h2><ul><li><a href="https://www.raywenderlich.com/about#mmorey" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/2345435ebf5920b1d600b7ee7d2221a1" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#jberlin" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/543e03504c1a25fbad30777b3e66b7ce" alt="" width="100" height="100" class="user-avatar"></a></li><li><a href="https://www.raywenderlich.com/about#eshapiro" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python_files/62467727d6e6b2fc18d0fed04078578b" alt="" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="https://www.raywenderlich.com/about#abt_resident-authors" sl-processed="1">15 total!</a></p>		</div>
+	</section>
+</section>
+</div>
+</div>
+		<footer id="main-footer">
+      <div class="block">    
+        <div class="top-row">
+          <a href="https://www.raywenderlich.com/" class="logo-mark" aria-label="Home" sl-processed="1"></a>
+          <ul class="footer-nav">
+            <li><a href="https://www.raywenderlich.com/104320/open-call-for-writers-and-editors" sl-processed="1">Write For Us</a></li>
+            <li><a href="http://rwdevcon.com/" sl-processed="1">RWDevCon</a></li>
+            <li><a href="https://store.raywenderlich.com/faq" sl-processed="1">FAQ</a></li>
+            <li><a href="https://www.raywenderlich.com/advertise" sl-processed="1">Advertise</a></li>
+            <li><a href="https://www.raywenderlich.com/contact" sl-processed="1">Contact</a></li>
+          </ul>
+          <ul class="social-media-links">
+            <li><a href="https://www.facebook.com/raywenderlich" aria-label="Follow us on facebook" sl-processed="1"><i class="icon-facebook-icon" aria-hidden="true"></i><span>12k+ Facebook likes</span></a></li>
+            <li><a href="https://twitter.com/rwenderlich" aria-label="Follow us on Twitter" sl-processed="1"><i class="icon-twitter-icon" aria-hidden="true"></i><span>57k+ Twitter followers</span></a></li>
+          </ul>
+        </div>
+
+        <div class="middle-row">
+          <div class="col screencast-col">
+            <div class="img-holder">
+            	<img src="./Beginning Game Programming for Teens with Python_files/subscribe-footer@2x.png" alt="">
+            </div>  
+            <div class="content-holder">
+              <span>Screencasts &amp; Video Tutorials</span>
+              <a class="no-link">Join over 4,000 subscribers!</a>
+              <p>Keep your Swift &amp; iOS skills up-to-date via hands-on tutorials — in video form! The largest collection of Swift &amp; iOS video tutorials anywhere.</p>
+              <a class="cta-to-subscribe" href="https://store.raywenderlich.com/products/subscription" sl-processed="1">Learn more</a>
+            </div>
+          </div>
+          <div class="col newsletter-col">
+            <div class="img-holder">
+            	<img src="./Beginning Game Programming for Teens with Python_files/image-rwweekly@2x.png" alt="Ray Wenderlich Weekly Development Newsletter">
+            </div>
+            <div class="content-holder">
+            <span>Join 70,000+ Developers</span>
+                <a>raywenderlich.com weekly</a>
+                <p>Sign up to receive the latest tutorials from raywenderlich.com each week, and receive a free epic-length tutorial as a bonus!</p>
+                <form action="https://raywenderlich.us1.list-manage.com/subscribe/post?u=1bc8e630b1599df629818e59b&amp;id=83b6edc87f" method="post" class="newsletter-signup-footer validate" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
+                <input type="email" id="mce-EMAIL" name="EMAIL" placeholder="EMAIL">
+                <button type="submit">Sign up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="gearbox">
+        <div class="block">
+          <div id="left-gears">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_small.svg" class="clockwise-motion small-gear gears" id="gear1" alt="">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_medium.svg" class="counter-clockwise-motion  medium-gear gears" id="gear2" alt="">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_large.svg" class="clockwise-motion large-gear gears" id="gear3" alt="">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_medium.svg" class="counter-clockwise-motion medium-gear gears" id="gear4" alt="">
+          </div>
+
+          <ul class="footer-small-links">
+            <li><span>© 2016 Razeware LLC. All rights reserved.</span></li>
+          </ul>
+
+          <div id="right-gears">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_small.svg" class="clockwise-motion small-gear gears" id="gear5" alt="">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_medium.svg" class="counter-clockwise-motion  medium-gear gears" id="gear6" alt="">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_large.svg" class="clockwise-motion large-gear gears" id="gear7" alt="">
+            <img src="./Beginning Game Programming for Teens with Python_files/gear_medium.svg" class="counter-clockwise-motion medium-gear gears" id="gear8" alt="">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!--
+
+                                               _           _ _      _     
+                                              | |         | (_)    | |    
+      _ __ __ _ _   _  __      _____ _ __   __| | ___ _ __| |_  ___| |__  
+     | '__/ _` | | | | \ \ /\ / / _ \ '_ \ / _` |/ _ \ '__| | |/ __| '_ \ 
+     | | | (_| | |_| |  \ V  V /  __/ | | | (_| |  __/ |  | | | (__| | | |
+     |_|  \__,_|\__, |   \_/\_/ \___|_| |_|\__,_|\___|_|  |_|_|\___|_| |_|
+                 __/ |                                                    
+                |___/                                                     
+
+    -->
+
+		<script type="text/javascript" src="https://platform.twitter.com/widgets.js?ver=1.1"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/highlight.pack.js.下载"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/code_highlighting.js.下载"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python_files/wp-embed.min.js.下载"></script>
+		
+		<script type="text/javascript">var _merchantSettings=_merchantSettings || [];_merchantSettings.push(['AT', '11ld4k']);(function(){var autolink=document.createElement('script');autolink.type='text/javascript';autolink.async=true; autolink.src='https://autolinkmaker.itunes.apple.com/js/itunes_autolinkmaker.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(autolink, s);})();</script>
+		<script>
+			if (jQuery.browser.msie) { jQuery("html").addClass("msie"); }
+			if (typeof window.chrome === "object") { jQuery("html").addClass("chrome"); }
+		</script>
+	
+
+
+<div class="swiftype-widget"><div class="autocomplete" style="position: absolute; z-index: 9999; top: 45px; left: 0px; width: 98px; display: none;"><ul></ul></div></div><div id="onesignal-bell-container" class="onesignal-bell-container onesignal-reset onesignal-bell-container-bottom-right"><div id="onesignal-bell-launcher" class="onesignal-bell-launcher onesignal-bell-launcher-md onesignal-bell-launcher-bottom-right onesignal-bell-launcher-theme-default onesignal-bell-launcher-active"><div class="onesignal-bell-launcher-button"><svg class="onesignal-bell-svg" xmlns="http://www.w3.org/2000/svg" width="99.7" height="99.7" viewBox="0 0 99.7 99.7" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0.35));;"><circle class="background" cx="49.9" cy="49.9" r="49.9" style="fill: rgb(0, 104, 55);"></circle><path class="foreground" d="M50.1 66.2H27.7s-2-.2-2-2.1c0-1.9 1.7-2 1.7-2s6.7-3.2 6.7-5.5S33 52.7 33 43.3s6-16.6 13.2-16.6c0 0 1-2.4 3.9-2.4 2.8 0 3.8 2.4 3.8 2.4 7.2 0 13.2 7.2 13.2 16.6s-1 11-1 13.3c0 2.3 6.7 5.5 6.7 5.5s1.7.1 1.7 2c0 1.8-2.1 2.1-2.1 2.1H50.1zm-7.2 2.3h14.5s-1 6.3-7.2 6.3-7.3-6.3-7.3-6.3z"></path><ellipse class="stroke" cx="49.9" cy="49.9" rx="37.4" ry="36.9"></ellipse></svg></div><div class="onesignal-bell-launcher-badge" style="filter: drop-shadow(0 2px 4px rgba(34,36,38,0));; -webkit-filter: drop-shadow(0 2px 4px rgba(34,36,38,0));;"></div><div class="onesignal-bell-launcher-message"><div class="onesignal-bell-launcher-message-body"></div></div><div class="onesignal-bell-launcher-dialog" style="filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));; -webkit-filter: drop-shadow(0px 2px 2px rgba(34,36,38,.15));;"><div class="onesignal-bell-launcher-dialog-body"></div></div></div></div></body></html>
