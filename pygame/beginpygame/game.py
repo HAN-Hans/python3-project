@@ -1,3 +1,5 @@
+# -*- coding : utf-8 -*-
+
 # https://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python
 
 # 1 - Import library
