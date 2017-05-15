@@ -9,6 +9,7 @@ from collections import defaultdict
 # 所有的有效输入都可以转换为"上，下，左，右，游戏重置，退出"这六种行为，用 actions 表示
 actions = ['Up', 'Left', 'Down', 'Right', 'Restart', 'Exit']
 # 有效输入键是最常见的 W（上），A（左），S（下），D（右），R（重置），Q（退出），这里要考虑到大写键开启的情况，获得有效键值列表
+
 letter_codes = [ord(ch) for ch in 'WASDRQwasdrq']
 # 将输入与行为利用zip函数进行关联：
 actions_dict = dict(zip(letter_codes, actions * 2))
@@ -22,7 +23,7 @@ def get_user_action(keyboard):
 
 # 矩阵转置
 def transpose(field):
-    return [list(row) for row in zip(*field)]
+    return [list(zip(*field))]
 # 矩阵逆转
 def invert(field):
     return [row[::-1] for row in field]
@@ -140,7 +141,7 @@ class GameField(object):
         self.field[i][j] = new_element
     # 判断能否移动
     def move_is_possible(self, direction):
-        def row_is_left_movable(row): 
+        def row_is_left_moveable(row): 
             def change(i): # true if there'll be change in i-th tile
                 if row[i] == 0 and row[i + 1] != 0: # 可以移动
                     return True
@@ -150,7 +151,7 @@ class GameField(object):
             return any(change(i) for i in range(len(row) - 1))
 
         check = {}
-        check['Left']  = lambda field:any(row_is_left_movable(row) for row in field)
+        check['Left']  = lambda field:any(row_is_left_moveable(row) for row in field)
         check['Right'] = lambda field:check['Left'](invert(field))
         check['Up']    = lambda field:check['Left'](transpose(field))
         check['Down']  = lambda field:check['Right'](transpose(field))
@@ -202,7 +203,7 @@ def main(stdscr):
         }
 
     curses.use_default_colors()
-    game_field = GameField(win=32)
+    game_field = GameField(win=2048)
 
 
     state = 'Init'
