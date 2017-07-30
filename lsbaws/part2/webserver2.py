@@ -1,4 +1,10 @@
 # Tested with Python 2.7.9, Linux & Mac OS X
+'''
+WSGI
+TCP连接、HTTP原始请求和响应格式
+'''
+
+
 import socket
 import StringIO
 import sys

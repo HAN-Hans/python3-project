@@ -3,7 +3,7 @@ Let’s Build A Web Server
 
 本文是翻译至[Ruslan's Blog](https://ruslanspivak.com/)
 
-主要介绍关于网站建立抓要流程和相关细节
+主要介绍关于网站建立主要流程和相关细节
 
 ---
 
