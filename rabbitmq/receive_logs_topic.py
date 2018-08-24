@@ -6,12 +6,13 @@ import pika
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 
-channel.exchange_declare(exchange='direct_logs', exchange_type='direct')
+channel.exchange_declare(exchange='topic_logs', exchange_type='topic')
 result = channel.queue_declare(exclusive=True)
 queue_name = result.method.queue
 
 
 severities = sys.argv[1:]
+print(severities)
 if not severities:
     sys.stderr.write("Usage: %s [info] [warning] [error]\n" % sys.argv[0])
     sys.exit(-1)
@@ -19,8 +20,8 @@ if not severities:
 
 for severity in severities:
     channel.queue_bind(
-        exchange='direct_logs',
-        queue=queue_name, 
+        exchange='topic_logs',
+        queue=queue_name,
         routing_key=severity,
     )
 print(" [*] Waiting for messages. To exit press CTRL+C")
