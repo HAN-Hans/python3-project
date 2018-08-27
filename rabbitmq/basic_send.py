@@ -8,13 +8,15 @@ message = "".join(sys.argv[1:]) or "Hello World!"
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 
-channel.exchange_declare(exchange='logs', exchange_type='fanout')
+
+channel.queue_declare(queue='hello')
 
 
+# 向hello队列仍任务
 channel.basic_publish(
-    exchange='logs',
-    routing_key='',
-    body=message,
+    exchange='',
+    routing_key='hello',
+    body=message
 )
 
 

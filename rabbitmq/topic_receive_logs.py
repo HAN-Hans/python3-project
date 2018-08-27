@@ -18,6 +18,8 @@ if not severities:
     sys.exit(-1)
 
 
+# * (star) can substitute for exactly one word.
+# # (hash) can substitute for zero or more words.
 for severity in severities:
     channel.queue_bind(
         exchange='topic_logs',
