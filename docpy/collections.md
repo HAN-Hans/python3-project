@@ -120,7 +120,6 @@ d = defaultdict(list)
 for k, v in s:
     d[k].append(v)
 d  # defaultdict(list, {'yellow': [1, 3], 'blue': [2, 4], 'red': [1]})
-
 ```
 
 ## namedtuple
@@ -143,4 +142,52 @@ d = {'banana': 3, 'apple': 4, 'pear': 1, 'orange': 2}  # regular unsorted dictio
 OrderedDict(sorted(d.items(), key=lambda t: t[0]))  # dictionary sorted by key
 OrderedDict(sorted(d.items(), key=lambda t: t[1]))  # dictionary sorted by value
 OrderedDict(sorted(d.items(), key=lambda t: len(t[0])))  # dictionary sorted by length of the key string
+
+d = OrderedDict.fromkeys('abcde')  # OrderedDict([('a', None), ('b', None), ('c', None), ('d', None), ('e', None)])
+# move_to_end(key, last=True)移动key到OrderdDict的尾或者头元素去掉
+d.move_to_end('b')  # OrderedDict([('a', None), ('c', None), ('d', None), ('e', None), ('b', None)])
+d.move_to_end('b', last=False)  # OrderedDict([('b', None), ('a', None), ('c', None), ('d', None), ('e', None)])
+# popitem(last=True)将OrderedDict的尾或者头元素去掉
+d.popitem()  # ('e', None)
+d.popitem(last=False)  # ('b', None)
+```
+
+## UserDict
+
+`UserDict([initialdata])`它是封装了一个字典类dict，主要使用来拷贝一个字典的数据，而不是共享同一份数据。在类成员data里拷贝了一份字典数据，如果没有提供初始数据，就保存为空的方式。底层字典可以作为属性访问。
+
+```python
+from collections import UserDict
+d = {'a': 2, 'b': 3}
+ud = UserDict(d)
+print(d, ud)  # {'a': 2, 'b': 3} {'a': 2, 'b': 3}
+del d['a']
+print(d, ud)  # {'b': 3} {'a': 2, 'b': 3}
+ud.data  # {'a': 2, 'b': 3}
+```
+
+## UserList
+
+`UserList([list])`它是封装了一个列表类list，在这个类里，主要管理成员变量data，在初始化时会把列表数据拷贝到data成员上，如果没有初始化数据，那么成员变量data初始化为空的列表。通过这种方式，可以向列表添加新行为。底层列表可以作为属性访问。
+
+```python
+from collections import UserList
+l = [1, 5, 6, 8]
+ul = UserList(l)
+print(l, ul)  # [1, 5, 6, 8] [1, 5, 6, 8] 
+del l[2]
+print(l, ul)  # [1, 5, 8] [1, 5, 6, 8]
+ul.data  # [1, 5, 6, 8]
+```
+
+# UserString
+
+`UserString(seq)`它是封装了一个字符串类str，构造一个字符串或者一个UNICODE字符串对象。构造时可以从初始化参数里拷贝到成员变量data，sequence支持bytes，str，UserString等类型。底层字符串可以作为属性访问。
+
+```python
+from collections import UserString
+s = 'this for test'
+us = UserString(s)
+print(us)  # this for test
+print(us.data)  # this for test
 ```
