@@ -57,14 +57,14 @@ from collections import Counter
 cnt = Counter()
 for word in ['red', 'blue', 'red', 'green', 'blue', 'blue']:
     cnt[word] += 1
-cnt  ## Counter({'blue': 3, 'red': 2, 'green': 1}) 
+cnt  ## Counter({'blue': 3, 'red': 2, 'green': 1})
 cnt = Counter()
 for ch in 'hello':
     cnt[ch] = cnt[ch] + 1
 cnt  # Counter({'l': 2, 'o': 1, 'h': 1, 'e': 1})
 c = Counter(a=4, b=2, c=0, d=-2)
 # elementes()返回可迭代对象
-sorted(c.elements())  # ['a', 'a', 'a', 'a', 'b', 'b'] 
+sorted(c.elements())  # ['a', 'a', 'a', 'a', 'b', 'b']
 # most_common(n=None)返回计数最大的n个数
 Counter('abracadabra').most_common(3)  # [('a', 5), ('r', 2), ('b', 2)]
 # subtract(iterable)
@@ -174,13 +174,13 @@ ud.data  # {'a': 2, 'b': 3}
 from collections import UserList
 l = [1, 5, 6, 8]
 ul = UserList(l)
-print(l, ul)  # [1, 5, 6, 8] [1, 5, 6, 8] 
+print(l, ul)  # [1, 5, 6, 8] [1, 5, 6, 8]
 del l[2]
 print(l, ul)  # [1, 5, 8] [1, 5, 6, 8]
 ul.data  # [1, 5, 6, 8]
 ```
 
-# UserString
+## UserString
 
 `UserString(seq)`它是封装了一个字符串类str，构造一个字符串或者一个UNICODE字符串对象。构造时可以从初始化参数里拷贝到成员变量data，sequence支持bytes，str，UserString等类型。底层字符串可以作为属性访问。
 
