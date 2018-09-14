@@ -4,12 +4,22 @@ import os
 import socket
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Connect to Redis
 redis = Redis(host="127.0.0.1", port=6379, db=0, socket_connect_timeout=2, socket_timeout=2)
 =======
 # Connect to Redis
 redis = Redis(host="127.0.0.1", db=0, socket_connect_timeout=2, socket_timeout=2)
+>>>>>>> celery
+=======
+# Connect to Redis
+redis = Redis(host="127.0.0.1", db=0, socket_connect_timeout=2, socket_timeout=2)
+=======
+
+# Connect to Redis
+redis = Redis(host="127.0.0.1", port=6379, db=0, socket_connect_timeout=2, socket_timeout=2)
+>>>>>>> 0816511addce92eb8bc140ce93ef180061bab02e
 >>>>>>> celery
 
 app = Flask(__name__)
@@ -28,7 +38,14 @@ def hello():
 
 if __name__ == "__main__":
 <<<<<<< HEAD
+<<<<<<< HEAD
     app.run(host='0.0.0.0', port=80)
 =======
     app.run(port=4000)
+>>>>>>> celery
+=======
+    app.run(port=4000)
+=======
+    app.run(host='0.0.0.0', port=80)
+>>>>>>> 0816511addce92eb8bc140ce93ef180061bab02e
 >>>>>>> celery
