@@ -152,20 +152,37 @@
 # print(b)
 
 # # 12  A10;S20;W10;D30;X;A1A;B10A11;;A10;
-import re
-a = input()
-point = [0, 0]
-for b in a.split(';'):
-    if len(b) != 3:
-        continue
-    p = re.match('^[ADSW][\d]{2}$', b)
-    if p:
-        if b[:1] == ('A'):
-            point[0] -= int(b[1:])
-        elif b[:1] == ('D'):
-            point[0] += int(b[1:])
-        elif b[:1] == ('W'):
-            point[1] += int(b[1:])
-        elif b[:1] == ('S'):
-            point[1] -= int(b[1:])
-print(str(point[0])+','+str(point[1]))
+# import re
+# a = input()
+# point = [0, 0]
+# for b in a.split(';'):
+#     if len(b) != 3:
+#         continue
+#     p = re.match('^[ADSW][\d]{2}$', b)
+#     if p:
+#         if b[:1] == ('A'):
+#             point[0] -= int(b[1:])
+#         elif b[:1] == ('D'):
+#             point[0] += int(b[1:])
+#         elif b[:1] == ('W'):
+#             point[1] += int(b[1:])
+#         elif b[:1] == ('S'):
+#             point[1] -= int(b[1:])
+# print(str(point[0])+','+str(point[1]))
+
+# 20
+while True:
+    try:
+        a = int(input())
+        b = map(int, input().split()[:8])
+        for i in range(a):
+            n, m = 0, 0
+            for j in range(i):
+                if b[j] < b[i]:
+                    n += 1
+            for j in range(a - i):
+                if b[j] > b[i]:
+                    m += 1
+
+    except:
+        pass
