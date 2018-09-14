@@ -8,7 +8,11 @@ WORKDIR /app
 ADD . /app
 
 # Install any needed packages specified in requirements.txt
+<<<<<<< HEAD
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+=======
+RUN pip install -i https://pypi.douban.com/simple -r requirements.txt
+>>>>>>> 0816511addce92eb8bc140ce93ef180061bab02e
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
@@ -17,4 +21,8 @@ EXPOSE 80
 ENV NAME World
 
 # Run app.py when the container launches
+<<<<<<< HEAD
 CMD ["python", "app.py"]
+=======
+CMD ["python", "app.py"]
+>>>>>>> 0816511addce92eb8bc140ce93ef180061bab02e
