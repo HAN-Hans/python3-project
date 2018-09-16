@@ -439,68 +439,371 @@
 #         break
 
 
-# 22
-'''
+# # 22
+# while True:
+#     try:
+#         a = list(map(int, input().split()))
+#         n, p = a[0], a[1:]
+#         b = list(map(int, input().split()))
+#         m, q = b[0], sorted(set(b[1:]))
+#         r, s = [], []
+#         for i in range(len(q)):
+#             res = []
+#             for j in range(n):
+#                 if str(q[i]) in str(p[j]):
+#                     res.extend([j, p[j]])
+#                     if q[i] not in s:
+#                         s.append(q[i])
+#             if res:
+#                 r.append(res)
+#         l = 0
+#         p = [0]
+#         for i in range(len(r)):
+#             p.append(s[i])
+#             p.append(len(r[i])//2)
+#             p.extend(r[i])
+#         p[0] = len(p) - 1
+#         print(' '.join(map(str, p)))
+#     except:
+#         break
 
-﻿
-输入描述:
-﻿一组输入整数序列I和一组规则整数序列R，I和R序列的第一个整数为序列的个数（个数不包含第一个整数）；
-整数范围为0~0xFFFFFFFF，序列个数不限
-输出描述:
-﻿从R依次中取出R<i>，对I进行处理，找到满足条件的I<j>： 
-I<j>整数对应的数字需要连续包含R<i>对应的数字。比如R<i>为23，I<j>为231，那么I<j>包含了R<i>，条件满足 。 
-按R<i>从小到大的顺序:
-(1)先输出R<i>； 
-(2)再输出满足条件的I<j>的个数； 
-(3)然后输出满足条件的I<j>在I序列中的位置索引(从0开始)； 
-(4)最后再输出I<j>。 
-附加条件： 
-(1)R<i>需要从小到大排序。相同的R<i>只需要输出索引小的以及满足条件的I<j>，索引大的需要过滤掉 
-(2)如果没有满足条件的I<j>，对应的R<i>不用输出 
-(3)最后需要在输出序列的第一个整数位置记录后续整数序列的个数(不包含“个数”本身)
 
-序列I：15,123,456,786,453,46,7,5,3,665,453456,745,456,786,453,123（第一个15表明后续有15个整数） 
-序列R：5,6,3,6,3,0（第一个5表明后续有5个整数） 
-输出：30, 3,6,0,123,3,453,7,3,9,453456,13,453,14,123,6,7,1,456,2,786,4,46,8,665,9,453456,11,456,12,786
-说明：
-30----后续有30个整数
-3----从小到大排序，第一个R<i>为0，但没有满足条件的I<j>，不输出0，而下一个R<i>是3
-6--- 存在6个包含3的I<j> 
-0--- 123所在的原序号为0 
-123--- 123包含3，满足条件 
-示例1
-输入
-复制
-15 123 456 786 453 46 7 5 3 665 453456 745 456 786 453 123 
-5 6 3 6 3 0
-输出
-复制
-30 3 6 0 123 3 453 7 3 9 453456 13 453 14 123 6 7 1 456 2 786 4 46 8 665 9 453456 11 456 12 786
-'''
-while True:
-    try:
-        a = input().split()
-        n, p = int(a[0]), a[1:]
-        b = input().split()
-        m, q = int(b[0]), sorted(set(b[1:]))
-        r, s = [], []
-        # print(n, p, m, q)
-        for i in range(len(q)):
-            res = []
-            for j in range(n):
-                if q[i] in p[j]:
-                    res.extend([j, p[j]])
-                    if q[i] not in s:
-                        s.append(q[i])
-            if res:
-                r.append(res)
-        l = 0
-        p = [0]
-        for i in range(len(r)):
-            p.append(s[i])
-            p.append(len(r[i])//2)
-            p.extend(r[i])
-        p[0] = len(p) -1
-        print(' '.join(p))
-    except:
-        break
+# # 23
+# while True:
+#     try:
+#         s = input()
+#         p, q = [], []
+#         for i in range(len(s)):
+#             if not s[i].isalpha():
+#                 p.append(s[i])
+#             else:
+#                 p.append("")
+#                 q.append(s[i])
+#         q.sort(key=lambda s: ord(s.lower()))
+#         s = 0
+#         for i in range(len(p)):
+#             if p[i] == "":
+#                 p[i] = q[s]
+#                 s += 1
+#         print(''.join(p))
+#     except:
+#         break
+
+# # 24
+# from collections import Counter
+# while True:
+#     try:
+#         n, *s, a, b = input().split()
+#         l = []
+#         for i in range(int(n)):
+#             if s[i] != a and Counter(s[i]) == Counter(a):
+#                 l.append(s[i])
+#         print(len(l))
+#         if l and b <= len(l):
+#             print(sorted(l)[int(b)-1])
+#     except:
+#         raise
+
+# # 25
+# import math
+# def is_prime(a):
+#     if a == 1:
+#         return False
+#     if a == 2:
+#         return True
+#     for i in range(2, int(math.sqrt(a))):
+#         if a % i:
+#             print(a)
+#             return True
+#     return False
+
+# while True:
+#     try:
+#         n, s = int(input()), input().split()
+#         l = 0
+#         for i in range(n-1):
+#             for j in range(i+1, n):
+#                 if is_prime(int(s[i]) + int(s[j])):
+#                     l += 1
+#         print(l)
+#     except:
+#         raise
+
+# # 26
+# def encrypt(a):
+#     b = ''
+#     for i in range(len(a)):
+#         if a[i].isalpha():
+#             p = ord(a[i]) + 33
+#             if p < 123:
+#                 b += chr(p)
+#             elif p == 123:
+#                 b += 'a'
+#             elif p == 155:
+#                 b += 'A'
+#             else:
+#                 b += chr(p - 64)
+#         elif a[i].isdigit():
+#             if int(a[i]) < 9:
+#                 b += str(int(a[i]) + 1)
+#             else:
+#                 b += '0'
+#         else:
+#             b += a[i]
+#     return b
+#
+# def unencrypt(a):
+#     b = ''
+#     for i in range(len(a)):
+#         if a[i].isalpha():
+#             p = ord(a[i]) - 33
+#             if p > 64:
+#                 b += chr(p)
+#             elif p == 64:
+#                 b += 'Z'
+#             elif p == 32:
+#                 b += 'z'
+#             else:
+#                 b += chr(p + 64)
+#         elif a[i].isdigit():
+#             if int(a[i]) == 0:
+#                 b += '9'
+#             else:
+#                 b += str(int(a[i]) - 1)
+#         else:
+#             b += a[i]
+#     return b
+#
+# while True:
+#     try:
+#         a, b = input(), input()
+#         print(encrypt(a))
+#         print(unencrypt(b))
+#     except:
+#         raise
+
+# # 27
+# while True:
+#     try:
+#         a = input().replace(' ', '')
+#         m, n = ''.join(sorted(a[::2])), ''.join(sorted(a[1::2]))
+#         r, b = '', ''
+#         for i in range(len(n)):
+#             r += m[i] + n[i]
+#         if len(m) > len(n):
+#             r += m[len(n):]
+#         for i in r:
+#             if i in '0123456789ABCDEFabcdef':
+#                 # 注意在转成二进制要不补齐到四位
+#                 s = hex(int(bin(int(i, base=16))[2:].rjust(4, "0")[::-1], base=2))[2:]
+#                 if s.isalpha():
+#                     s = s.upper()
+#                 b += s
+#             else:
+#                 b += i
+#         print(b)
+#     except:
+#         raise
+
+# # 28
+# while True:
+#     try:
+#         a = input()
+#         l = []
+#         s = ''
+#         for i in a:
+#             if i.isalpha():
+#                 s += i
+#             else:
+#                 if s:
+#                     l.append(s)
+#                 s = ''
+#         if s:
+#             l.append(s)
+#         print(' '.join(l[::-1]))
+#     except:
+#         raise
+
+
+# 29
+# while True:
+#     try:
+#         a = input().strip()
+#         m = 0
+#         for i in range(len(a)-1):
+#             for j in range(i+1, len(a)+1):
+#                 print(a[i:j])
+#                 if a[i:j] == a[i:j][::-1]:
+#                     if j - i > m:
+#                         m = j - i
+#         print(m)
+#     except:
+#         raise
+# while True:
+#     try:
+#         a = input().strip()
+#         m = 0
+#         for i in range(1, len(a)):
+#             if i - m >= 1 and a[i-m-1:i+1] == a[i-m-1:i+1][::-1]:
+#                 m += 2
+#             elif i - m > 0 and a[i-m:i+1] == a[i-m:i+1][::-1]:
+#                 m += 1
+#         print(m)
+#     except:
+#         raise
+
+# # 30
+# while True:
+#     try:
+#         a = map(bin, map(int, input().split('.')))
+#         b = bin(int(input()))[2:].rjust(32, "0")
+#         s = ""
+#         for i in a:
+#             t = i[2:].rjust(8, "0")
+#             s += t
+#         r = []
+#         for i in range(4):
+#             r.append(str(int(b[8*i:8*(i+1)], base=2)))
+#         print(int(s, base=2))
+#         print('.'.join(r))
+#     except:
+#         raise
+
+# # 31
+# while True:
+#     try:
+#         print(''.join(sorted(input())))
+#     except:
+#         break
+
+# # 32
+# while True:
+#     try:
+#         n = int(input())
+#         p, f = [], 1
+#         for i in range(n):
+#             q = [f]
+#             for j in range(i, n-1):
+#                 q.append(q[j-i]+j+2)
+#             p.append(q)
+#             f += i+1
+#         for i in p:
+#             print(' '.join(map(str, i)))
+#     except:
+#         raise
+
+# # 33
+# m = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+# while True:
+#     try:
+#         key, pw, chs, res = input(), input(), [], ''
+#         for i in key:
+#             i = i.upper()
+#             if i not in chs:
+#                 chs.append(i)
+#         n = []
+#         chs += m
+#         for i in chs:
+#             if i not in n:
+#                 n.append(i)
+#         for i in pw:
+#             c = n[m.index(i.upper())]
+#             if i.islower():
+#                 res += c.lower()
+#             else:
+#                 res += c
+#         print(res)
+#     except:
+#         raise
+
+# # 34
+# # while True:
+# #     try:
+# #         month = int(input()) - 1
+# #         a, b, c = 1, 0, 0
+# #         while month:
+# #             c += b
+# #             b = a
+# #             a = c
+# #             month -= 1
+# #         print(a+b+c)
+# #     except:
+# #         break
+# def fn(m):
+#     if m < 3:
+#         return 1
+#     return fn(m-1) + fn(m-2)
+#
+# while True:
+#     try:
+#         month = int(input())
+#         print(fn(month))
+#     except:
+#         raise
+
+# # 35
+# while True:
+#     try:
+#         h = int(input())
+#         s = 0
+#         for i in range(5):
+#             s += h + h/2
+#             h = h / 2
+#         s = s - h
+#         print(s, h)
+#     except:
+#         break
+
+# # 36
+# while True:
+#     try:
+#         mask, ip1, ip2 = input(), input(), input()
+#         s = ''
+#         for i in range(mask.split('.')):
+#             s += bin(int(i))[2:].rjust(8, "0")
+#         if '01' in s:
+#             print(1)
+#             break
+#         f = False
+#         for i in range(ip1.split('.')):
+#             if i > '255':
+#                 f = True
+#         if f:
+#             print(1)
+#             break
+#         for i in range(ip2.split('.')):
+#             if i > '255':
+#                 f = True
+#         if f:
+#             print(1)
+#             break
+#         print()
+#     except:
+#         break
+
+# # 37
+# while True:
+#     try:
+#         n, m, x = int(input()), list(map(int, input().split())), list(map(int, input().split()))
+#         l = [[m[i]*j for j in range(1, x[i]+1)] for i in range(n)]
+#         p = set()
+#         print(l)
+#         q = [0]
+#         for i in l:
+#             i = [0] + i
+#             for j in i:
+#                 for k in q:
+#                     p.add(k + j)
+#             q = list(p)
+#         print(len(q))
+#     except:
+#         raise
+
+# # 38
+# while True:
+#     try:
+#         a = input()
+#         if a.isdigit():
+#
+#     except:
+#         raise
