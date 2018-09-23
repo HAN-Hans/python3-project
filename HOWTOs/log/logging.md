@@ -558,10 +558,10 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 9. [`SysLogHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.SysLogHandler "logging.handlers.SysLogHandler") 实例将消息发送到Unix syslog守护程序，可能在远程计算机上。
 10. [`NTEventLogHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.NTEventLogHandler "logging.handlers.NTEventLogHandler") 实例将消息发送到Windows NT / 2000 / XP事件日志。
 11. [`MemoryHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.MemoryHandler "logging.handlers.MemoryHandler") 实例将消息发送到内存中的缓冲区，只要满足特定条件，就会刷新。
-12.  [`HTTPHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.HTTPHandler "logging.handlers.HTTPHandler")实例使用任一语义`GET`或`POST`语义将消息发送到HTTP服务器。
+12. [`HTTPHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.HTTPHandler "logging.handlers.HTTPHandler")实例使用任一语义`GET`或`POST`语义将消息发送到HTTP服务器。
 13. [`WatchedFileHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.WatchedFileHandler "logging.handlers.WatchedFileHandler")实例会监视他们要登录的文件。如果文件发生更改，则会关闭该文件并使用文件名重新打开。此处理程序仅在类Unix系统上有用; Windows不支持使用的基础机制。
 14. [`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")实例将消息发送到队列，例如在[`queue`](https://docs.python.org/3/library/queue.html#module-queue "queue：同步的队列类。")或[`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing "多处理：基于进程的并行性。")模块中实现的那些队列。
-15.  [`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")实例不执行任何错误消息。它们由想要使用日志记录的库开发人员使用，但是希望避免“如果库用户未配置日志记录，则可以显示”没有找到记录器XXX的处理程序“消息。有关更多信息，请参阅[配置库的日志记录](https://docs.python.org/3/howto/logging.html#library-config)。
+15. [`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")实例不执行任何错误消息。它们由想要使用日志记录的库开发人员使用，但是希望避免“如果库用户未配置日志记录，则可以显示”没有找到记录器XXX的处理程序“消息。有关更多信息，请参阅[配置库的日志记录](https://docs.python.org/3/howto/logging.html#library-config)。
 
 新的3.1版：的[`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")类。
 
@@ -732,7 +732,7 @@ if __name__ == '__main__':
 
 运行时，脚本应该打印如下内容：
 
-```python    
+```python
    0 Thread-1 Hi from myfunc
    3 MainThread Hello from main
  505 Thread-1 Hi from myfunc
@@ -838,7 +838,7 @@ myapp.area2 : ERROR    The five boxing wizards jump quickly.
 
 在文件中你会看到类似的东西
 
-```python 
+```python
 10-22 22:19 root         INFO     Jackdaws love my big sphinx of quartz.
 10-22 22:19 myapp.area1  DEBUG    Quick zephyrs blow, vexing daft Jim.
 10-22 22:19 myapp.area1  INFO     How quickly daft jumping zebras vex.
@@ -920,7 +920,7 @@ print('complete')
 
 下面是使用这两个类的示例(省略了导入)：
 
-```python 
+```python
 que = queue.Queue(-1)  # no limit on size
 queue_handler = QueueHandler(que)
 handler = logging.StreamHandler()
