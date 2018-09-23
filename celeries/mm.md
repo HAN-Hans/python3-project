@@ -1,4 +1,0 @@
-# Celery Doc
-
-## task
-
