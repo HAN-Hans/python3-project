@@ -723,42 +723,6 @@ array([[   0,   10,   10,    3],
        [   8,   10,   10,   11]])
 ```
 
-### 功能和方法概述
-
-以下是按类别排序的一些有用的NumPy函数和方法名称的列表. 有关完整列表, 请参阅[例程](https://docs.scipy.org/doc/numpy/reference/routines.html#routines). 
-
-**数组创建**
-
-[`arange`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html#numpy.arange "numpy.arange"),  [`array`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array "numpy.array"),  [`copy`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.copy.html#numpy.copy "numpy.copy"),  [`empty`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.empty.html#numpy.empty "numpy.empty"),  [`empty_like`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.empty_like.html#numpy.empty_like "numpy.empty_like"),  [`eye`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.eye.html#numpy.eye "numpy.eye"),  [`fromfile`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.fromfile.html#numpy.fromfile "numpy.fromfile"),  [`fromfunction`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.fromfunction.html#numpy.fromfunction "numpy.fromfunction"),  [`identity`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.identity.html#numpy.identity "numpy.identity"),  [`linspace`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace "numpy.linspace"),  [`logspace`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.logspace.html#numpy.logspace "numpy.logspace"), [`mgrid`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.mgrid.html#numpy.mgrid "numpy.mgrid"),  [`ogrid`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ogrid.html#numpy.ogrid "numpy.ogrid"),  [`ones`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html#numpy.ones "numpy.ones"),  [`ones_like`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones_like.html#numpy.ones_like "numpy.ones_like"),  *- [R , *[`zeros`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros "numpy.zeros"),  [`zeros_like`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros_like.html#numpy.zeros_like "numpy.zeros_like")
-
-**转换**
-
-[`ndarray.astype`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.astype.html#numpy.ndarray.astype "numpy.ndarray.astype"),  [`atleast_1d`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.atleast_1d.html#numpy.atleast_1d "numpy.atleast_1d"),  [`atleast_2d`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.atleast_2d.html#numpy.atleast_2d "numpy.atleast_2d"),  [`atleast_3d`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.atleast_3d.html#numpy.atleast_3d "numpy.atleast_3d"),  [`mat`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.mat.html#numpy.mat "numpy.mat")
-
-**手法**
-
-[`array_split`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array_split.html#numpy.array_split "numpy.array_split"),  [`column_stack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.column_stack.html#numpy.column_stack "numpy.column_stack"),  [`concatenate`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.concatenate.html#numpy.concatenate "numpy.concatenate"),  [`diagonal`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.diagonal.html#numpy.diagonal "numpy.diagonal"),  [`dsplit`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.dsplit.html#numpy.dsplit "numpy.dsplit"),  [`dstack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.dstack.html#numpy.dstack "numpy.dstack"),  [`hsplit`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.hsplit.html#numpy.hsplit "numpy.hsplit"),  [`hstack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.hstack.html#numpy.hstack "numpy.hstack"),  [`ndarray.item`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.item.html#numpy.ndarray.item "numpy.ndarray.item"),  [`newaxis`](https://docs.scipy.org/doc/numpy/reference/constants.html#numpy.newaxis "numpy.newaxis"), [`ravel`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html#numpy.ravel "numpy.ravel"),  [`repeat`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.repeat.html#numpy.repeat "numpy.repeat"),  [`reshape`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html#numpy.reshape "numpy.reshape"),  [`resize`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.resize.html#numpy.resize "numpy.resize"),  [`squeeze`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.squeeze.html#numpy.squeeze "numpy.squeeze"),  [`swapaxes`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.swapaxes.html#numpy.swapaxes "numpy.swapaxes"),  [`take`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.take.html#numpy.take "numpy.take"),  [`transpose`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.transpose.html#numpy.transpose "numpy.transpose"),  [`vsplit`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vsplit.html#numpy.vsplit "numpy.vsplit"),  [`vstack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vstack.html#numpy.vstack "numpy.vstack")
-
-**问题**
-
-[`all`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.all.html#numpy.all "numpy.all"),  [`any`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.any.html#numpy.any "numpy.any"),  [`nonzero`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.nonzero.html#numpy.nonzero "numpy.nonzero"),  [`where`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html#numpy.where "numpy.where")
-
-**订购**
-
-[`argmax`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax "numpy.argmax"),  [`argmin`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmin.html#numpy.argmin "numpy.argmin"),  [`argsort`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort "numpy.argsort"),  [`max`](https://docs.python.org/dev/library/functions.html#max "（在Python v3.8中）"),  [`min`](https://docs.python.org/dev/library/functions.html#min "（在Python v3.8中）"),  [`ptp`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ptp.html#numpy.ptp "numpy.ptp"),  [`searchsorted`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.searchsorted.html#numpy.searchsorted "numpy.searchsorted"),  [`sort`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.sort.html#numpy.sort "numpy.sort")
-
-**操作**
-
-[`choose`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.choose.html#numpy.choose "numpy.choose"),  [`compress`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.compress.html#numpy.compress "numpy.compress"),  [`cumprod`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.cumprod.html#numpy.cumprod "numpy.cumprod"),  [`cumsum`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.cumsum.html#numpy.cumsum "numpy.cumsum"),  [`inner`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.inner.html#numpy.inner "numpy.inner"),  [`ndarray.fill`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.fill.html#numpy.ndarray.fill "numpy.ndarray.fill"),  [`imag`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.imag.html#numpy.imag "numpy.imag"),  [`prod`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.prod.html#numpy.prod "numpy.prod"),  [`put`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.put.html#numpy.put "numpy.put"),  [`putmask`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.putmask.html#numpy.putmask "numpy.putmask"),  [`real`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.real.html#numpy.real "numpy.real"),  [`sum`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum "numpy.sum")
-
-**基本统计**
-
-[`cov`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.cov.html#numpy.cov "numpy.cov"),  [`mean`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.mean.html#numpy.mean "numpy.mean"),  [`std`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.std.html#numpy.std "numpy.std"),  [`var`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.var.html#numpy.var "numpy.var")
-
-**基本线性代数**
-
-[`cross`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.cross.html#numpy.cross "numpy.cross"),  [`dot`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html#numpy.dot "numpy.dot"),  [`outer`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.outer.html#numpy.outer "numpy.outer"),  [`linalg.svd`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html#numpy.linalg.svd "numpy.linalg.svd"),  [`vdot`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vdot.html#numpy.vdot "numpy.vdot")
-
 ## 少基础
 
 ### 广播规则
@@ -1198,4 +1162,4 @@ xy = np.hstack([x,y])                     # xy =([0,2,4,6,8,0,1,2,3,4])
 *   [NumPy参考](https://docs.scipy.org/doc/numpy/reference/index.html#reference)
 *   [SciPy教程](https://docs.scipy.org/doc/scipy/reference/tutorial/index.html)
 *   [SciPy讲义](http://www.scipy-lectures.org/)
-*   甲[MATLAB, R, IDL, NumPy的/ SciPy的字典](http://mathesaurus.sf.net/)
+*   [MATLAB, R, IDL, NumPy的/ SciPy的字典](http://mathesaurus.sf.net/)
