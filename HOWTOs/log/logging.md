@@ -1,6 +1,66 @@
 # loggin HOWTOs
 
-[CTO]
+<!-- TOC -->
+
+- [loggin HOWTOs](#loggin-howtos)
+    - [基础日志教程](#基础日志教程)
+        - [何时使用日志记录](#何时使用日志记录)
+        - [一个简单的例子](#一个简单的例子)
+        - [记录到文件](#记录到文件)
+        - [从多个模块记录](#从多个模块记录)
+        - [记录变量数据](#记录变量数据)
+        - [更改显示消息的格式](#更改显示消息的格式)
+        - [在消息中显示日期/时间](#在消息中显示日期时间)
+        - [后续步骤](#后续步骤)
+    - [高级日志教程](#高级日志教程)
+        - [记录流程](#记录流程)
+        - [记录器](#记录器)
+        - [处理程序](#处理程序)
+        - [格式化程序](#格式化程序)
+        - [配置记录](#配置记录)
+        - [如果没有提供配置会发生什么](#如果没有提供配置会发生什么)
+        - [配置库的日志记录](#配置库的日志记录)
+        - [记录级别](#记录级别)
+        - [自定义级别](#自定义级别)
+        - [有用的处理程序](#有用的处理程序)
+        - [记录期间引发的异常](#记录期间引发的异常)
+        - [使用任意对象作为消息](#使用任意对象作为消息)
+        - [优化](#优化)
+    - [日志cookbook](#日志cookbook)
+        - [在多个模块中使用logging](#在多个模块中使用logging)
+        - [从多个线程记录](#从多个线程记录)
+        - [多个处理程序和格式化程序](#多个处理程序和格式化程序)
+        - [记录到多个目的地](#记录到多个目的地)
+        - [配置服务器示例](#配置服务器示例)
+        - [处理阻止的处理程序](#处理阻止的处理程序)
+        - [通过网络发送和接收日志记录事件](#通过网络发送和接收日志记录事件)
+        - [将上下文信息添加到日志输出中](#将上下文信息添加到日志输出中)
+        - [使用LoggerAdapters传递上下文信息](#使用loggeradapters传递上下文信息)
+            - [使用除dicts之外的对象来传递上下文信息](#使用除dicts之外的对象来传递上下文信息)
+            - [使用过滤器传递上下文信息](#使用过滤器传递上下文信息)
+        - [从多个进程记录到单个文件](#从多个进程记录到单个文件)
+        - [使用文件旋转](#使用文件旋转)
+        - [使用替代格式样式](#使用替代格式样式)
+        - [自定义`LogRecord`](#自定义logrecord)
+        - [子类化QueueHandler - 一个ZeroMQ示例](#子类化queuehandler---一个zeromq示例)
+        - [子类化QueueListener - 一个ZeroMQ示例](#子类化queuelistener---一个zeromq示例)
+        - [基于字典的配置示例](#基于字典的配置示例)
+        - [使用旋转器和命名器来自定义日志旋转处理](#使用旋转器和命名器来自定义日志旋转处理)
+        - [更精细的多处理示例](#更精细的多处理示例)
+        - [将BOM插入发送到SysLogHandler的消息中](#将bom插入发送到sysloghandler的消息中)
+        - [实现结构化日志记录](#实现结构化日志记录)
+        - [使用自定义处理程序](#使用自定义处理程序)
+        - [在整个应用程序中使用特定格式样式](#在整个应用程序中使用特定格式样式)
+            - [使用LogRecord工厂](#使用logrecord工厂)
+            - [使用自定义消息对象](#使用自定义消息对象)
+        - [使用配置过滤器`dictConfig()`](#使用配置过滤器dictconfig)
+        - [自定义异常格式化](#自定义异常格式化)
+        - [说出日志消息](#说出日志消息)
+        - [缓冲日志消息并有条件地输出它们](#缓冲日志消息并有条件地输出它们)
+        - [通过配置使用UTC(GMT)格式化时间](#通过配置使用utcgmt格式化时间)
+        - [使用上下文管理器进行选择性记录](#使用上下文管理器进行选择性记录)
+
+<!-- /TOC -->
 
 ---
 
@@ -518,7 +578,7 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 
 强烈建议您不要在你的library's loggers添加 *NullHandler* 之外任何处理程序。这是因为处理程序的配置是使用您的库的应用程序开发人员的特权。应用程序开发人员了解他们的目标受众以及哪些处理程序最适合他们的应用程序：如果您在“引擎盖下”添加处理程序，则可能会干扰他们执行单元测试和提供符合其要求的日志的能力。
 
-## 记录级别
+### 记录级别
 
 日志记录级别的数值在下表中给出。如果要定义自己的级别，并且需要它们具有相对于预定义级别的特定值，则主要关注这些级别。如果您使用相同的数值定义级别，它将覆盖预定义的值; 预定义的名称丢失。
 
@@ -543,7 +603,7 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 
 定义您自己的leval是可能的，但不一定是必要的，因为现有leval是根据实践经验选择的。但是，如果您确信需要自定义级别，则在执行此操作时应特别小心，*如果您正在开发库，则定义自定义级别*可能是*一个非常糟糕的主意*。这是因为如果多个库作者都定义了他们自己的自定义级别，那么使用开发人员很难控制和/或解释这些多个库的日志记录输出，因为给定的数值可能意味着不同的东西对于不同的图书馆
 
-## 有用的处理程序
+### 有用的处理程序
 
 除了基[`Handler`](https://docs.python.org/3/library/logging.html#logging.Handler "logging.Handler")类之外，还提供了许多有用的子类：
 
@@ -577,7 +637,7 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 
 基本[`Filter`](https://docs.python.org/3/library/logging.html#logging.Filter "logging.Filter")功能允许按特定记录器名称进行过滤。如果使用此功能，则允许通过过滤器发送到指定记录器及其子项的消息，并删除所有其他消息。
 
-## 记录期间引发的异常
+### 记录期间引发的异常
 
 日志包旨在吞噬登录生产时发生的异常。这样，处理日志记录事件时发生的错误(例如记录错误配置，网络或其他类似错误)不会导致使用日志记录的应用程序过早终止。
 
@@ -589,11 +649,11 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 
 默认值`raiseExceptions`是`True`。这是因为在开发期间，您通常希望收到发生的任何异常的通知。它建议您设置`raiseExceptions`到 `False`用于生产使用。
 
-## 使用任意对象作为消息
+### 使用任意对象作为消息
 
 在前面的部分和示例中，假设记录事件时传递的消息是字符串。但是，这不是唯一的可能性。您可以将任意对象作为消息传递，并且当日志记录系统需要将其转换为字符串表示时，将调用其`__str__()`方法。事实上，如果你愿意，你可以避免完全计算字符串表示 - 例如，`SocketHandler`通过pickle并通过线路发送事件来发出事件。
 
-## 优化
+### 优化
 
 消息参数的格式化将被推迟，直到无法避免。但是，计算传递给日志记录方法的参数也可能很昂贵，如果记录器只是丢弃您的事件，您可能希望避免这样做。要决定做什么，可以调用带有level参数的[`isEnabledFor()`](https://docs.python.org/3/library/logging.html#logging.Logger.isEnabledFor "logging.Logger.isEnabledFor")方法，如果Logger为该级别的调用创建了事件，则返回true。你可以写这样的代码：
 
@@ -621,9 +681,9 @@ if logger.isEnabledFor(logging.DEBUG):
 
 ---
 
-## [日志cookbook](https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook "永久链接到这个标题")
+## 日志cookbook
 
-此页面包含许多与日志记录相关的配方，这些配方过去一直很有用。
+[日志cookbook](https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook "永久链接到这个标题")此页面包含许多与日志记录相关的配方，这些配方过去一直很有用。
 
 ### 在多个模块中使用logging
 
@@ -1076,11 +1136,11 @@ About to start TCP server...
 
 请注意，在某些情况下，pickle存在一些安全问题。如果这些影响到您，您可以通过覆盖`makePickle()`方法并在那里实现替代方法来使用替代序列化方案，以及调整上述脚本以使用替代序列化。
 
-## 将上下文信息添加到日志输出中[](https://docs.python.org/3/howto/logging-cookbook.html#adding-contextual-information-to-your-logging-output "永久链接到这个标题")
+### 将上下文信息添加到日志输出中
 
 有时，除了传递给日志记录调用的参数之外，您还希望日志记录输出包含上下文信息。例如，在联网应用程序中，可能需要在日志中记录客户端特定信息(例如，远程客户端的用户名或IP地址)。虽然您可以使用*额外的*参数来实现这一点，但以这种方式传递信息并不总是方便。尽管`Logger`在每个连接的基础上创建实例可能很诱人 ，但这不是一个好主意，因为这些实例不是垃圾回收。虽然这在实践中不是问题，但是当`Logger`实例的数量取决于您要在记录应用程序时使用的粒度级别时，如果实例的数量可能很难管理`Logger` 实例变得有效无限。
 
-### 使用LoggerAdapters传递上下文信息[](https://docs.python.org/3/howto/logging-cookbook.html#using-loggeradapters-to-impart-contextual-information "永久链接到这个标题")
+### 使用LoggerAdapters传递上下文信息
 
 您可以通过简单的方式将上下文信息与记录事件信息一起输出，即使用`LoggerAdapter`该类。此类设计看起来像一个`Logger`，这样就可以调用 `debug()`，`info()`，`warning()`，`error()`， `exception()`，`critical()`和`log()`。这些方法与其对应的签名具有相同的签名`Logger`，因此您可以交替使用这两种类型的实例。
 
@@ -1979,7 +2039,7 @@ if __name__ == '__main__':
 
 格式化的消息*将*使用UTF-8编码进行编码 `SysLogHandler`。如果您遵守上述规则，您应该能够制作 [**符合RFC 5424**](https://tools.ietf.org/html/rfc5424.html)的消息。如果不这样做，日志记录可能不会抱怨，但您的消息将不符合RFC 5424，并且您的syslog守护程序可能会抱怨。
 
-## 实现结构化日志记录[](https://docs.python.org/3/howto/logging-cookbook.html#implementing-structured-logging "永久链接到这个标题")
+### 实现结构化日志记录
 
 虽然大多数日志消息是供人阅读，因此不容易机解析的，有可能是要以结构化的格式输出消息的情况下*是*能够通过程序被解析(而不需要复杂的正则表达式解析日志消息)。使用日志包可以直接实现。有许多方法可以实现这一点，但以下是一种使用JSON以机器可解析的方式序列化事件的简单方法：
 
@@ -2637,28 +2697,28 @@ if __name__ == '__main__':
 
 ```python
 $ python logctx.py
-1\. This should appear just once on stderr.
-3\. This should appear once on stderr.
-5\. This should appear twice - once on stderr and once on stdout.
-5\. This should appear twice - once on stderr and once on stdout.
-6\. This should appear just once on stderr.
+1. This should appear just once on stderr.
+3. This should appear once on stderr.
+5. This should appear twice - once on stderr and once on stdout.
+5. This should appear twice - once on stderr and once on stdout.
+6. This should appear just once on stderr.
 ```
 
 如果我们再次运行它，但管`stderr`到`/dev/null`，我们看下面的，这是写入唯一的消息`stdout`：
 
 ```python
 $ python logctx.py 2>/dev/null
-5\. This should appear twice - once on stderr and once on stdout.
+5. This should appear twice - once on stderr and once on stdout.
 ```
 
 再一次，但管道`stdout`来`/dev/null`，我们得到：
 
 ```python
 $ python logctx.py >/dev/null
-1\. This should appear just once on stderr.
-3\. This should appear once on stderr.
-5\. This should appear twice - once on stderr and once on stdout.
-6\. This should appear just once on stderr.
+1. This should appear just once on stderr.
+3. This should appear once on stderr.
+5. This should appear twice - once on stderr and once on stdout.
+6. This should appear just once on stderr.
 ```
 
 在这种情况下，打印的消息＃5 `stdout`没有出现，如预期的那样。
