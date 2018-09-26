@@ -1,5 +1,46 @@
 # Pandas快速入门教程
 
+<!-- TOC -->
+
+- [Pandas快速入门教程](#pandas快速入门教程)
+    - [概述](#概述)
+        - [数据结构](#数据结构)
+        - [为什么有多个数据结构](#为什么有多个数据结构)
+        - [可变性和数据复制](#可变性和数据复制)
+    - [Pandas简单入门](#pandas简单入门)
+        - [对象创建](#对象创建)
+        - [查看数据](#查看数据)
+        - [Selection](#selection)
+            - [Getting](#getting)
+            - [按标签选择](#按标签选择)
+            - [按位置选择](#按位置选择)
+            - [布尔索引](#布尔索引)
+            - [设定](#设定)
+        - [缺少数据](#缺少数据)
+        - [操作](#操作)
+            - [统计](#统计)
+            - [apply](#apply)
+            - [直方图](#直方图)
+            - [字符串方法](#字符串方法)
+        - [Merge](#merge)
+            - [Concat](#concat)
+            - [加入](#加入)
+            - [追加](#追加)
+        - [分组](#分组)
+        - [Reshaping](#reshaping)
+            - [堆栈](#堆栈)
+            - [数据透视表](#数据透视表)
+        - [时间序列](#时间序列)
+        - [分类](#分类)
+        - [绘图](#绘图)
+        - [获取数据进/出](#获取数据进出)
+            - [CSV](#csv)
+            - [HDF5](#hdf5)
+            - [Excel中](#excel中)
+        - [陷阱](#陷阱)
+
+<!-- /TOC -->
+
 ## 概述
 
 **pandas**是一个[Python](http://www.python.org/)包, 提供快速, 灵活和富有表现力的数据结构, 旨在使“关系”或“标记”数据的使用既简单又直观. 它旨在成为在Python中进行实际, **真实世界**数据分析的基础高级构建块. 此外, 它还有更广泛的目标, 即成为**任何语言中最强大, 最灵活的开源数据分析/操作工具**. 它已朝着这个目标迈进. 
@@ -502,7 +543,6 @@ Out[43]:
 2013-01-04  0.721555 -0.706771 -1.039575  0.271860  three
 2013-01-05 -0.424972  0.567020  0.276232 -1.087401   four
 2013-01-06 -0.673690  0.113648 -1.478427  0.524988  three
-
 In [44]: df2[df2['E'].isin(['two','four'])]
 Out[44]: 
                    A         B         C         D     E
@@ -543,7 +583,8 @@ In [49]: df.iat[0,1] = 0
 
 通过使用NumPy数组进行设置：
 
-```pythonIn [50]: df.loc[:,'D'] = np.array([5] * len(df))
+```python
+In [50]: df.loc[:,'D'] = np.array([5] * len(df))
 ```
 
 先前设置操作的结果. 
@@ -701,7 +742,6 @@ Out[66]:
 2013-01-04  1.071818 -2.984555 -2.924354  20   6.0
 2013-01-05  0.646846 -2.417535 -2.648122  25  10.0
 2013-01-06 -0.026844 -2.303886 -4.126549  30  15.0
-
 In [67]: df.apply(lambda x: x.max() - x.min())
 Out[67]: 
 A    2.073961
@@ -731,7 +771,6 @@ Out[69]:
 8    4
 9    4
 dtype: int64
-
 In [70]: s.value_counts()
 Out[70]: 
 4    5
@@ -786,8 +825,6 @@ Out[74]:
 7 -0.932132  1.956030  0.017587 -0.016692
 8 -0.575247  0.254161 -1.143704  0.215897
 9  1.193555 -0.077118 -0.408530 -0.862495
-
-# break it into pieces
 In [75]: pieces = [df[:3], df[3:7], df[7:]]
 In [76]: pd.concat(pieces)
 Out[76]: 
@@ -1020,12 +1057,11 @@ two    A  0.282696  0.816482
 
 ```python
 In [105]: df = pd.DataFrame({'A' : ['one', 'one', 'two', 'three'] * 3,
- .....:                   'B' : ['A', 'B', 'C'] * 4,
- .....:                   'C' : ['foo', 'foo', 'foo', 'bar', 'bar', 'bar'] * 2,
- .....:                   'D' : np.random.randn(12),
- .....:                   'E' : np.random.randn(12)})
+ .....:                      'B' : ['A', 'B', 'C'] * 4,
+ .....:                      'C' : ['foo', 'foo', 'foo', 'bar', 'bar', 'bar'] * 2,
+ .....:                      'D' : np.random.randn(12),
+ .....:                      'E' : np.random.randn(12)})
  .....: 
-
 In [106]: df
 Out[106]: 
         A  B    C         D         E
@@ -1244,13 +1280,11 @@ In [137]: ts.plot()
 Out[137]: <matplotlib.axes._subplots.AxesSubplot at 0x7f213444c048>
 ```
 
-![_images / series_plot_basic.png](http://upload-images.jianshu.io/upload_images/13148580-deec9782822c3a74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 在DataFrame上, 该[`plot()`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html#pandas.DataFrame.plot "pandas.DataFrame.plot")方法可以方便地使用标签绘制所有列：
 
 ```python
 In [138]: df = pd.DataFrame(np.random.randn(1000, 4), index=ts.index,
- .....:                  columns=['A', 'B', 'C', 'D'])
+ .....:                     columns=['A', 'B', 'C', 'D'])
  .....: 
 In [139]: df = df.cumsum()
 In [140]: plt.figure(); df.plot(); plt.legend(loc='best')
@@ -1259,7 +1293,7 @@ Out[140]: <matplotlib.legend.Legend at 0x7f212489a780>
 
 ### 获取数据进/出
 
-#### CSV [](http://pandas.pydata.org/pandas-docs/stable/10min.html#csv "永久链接到这个标题")
+#### CSV
 
 [写入csv文件. ](http://pandas.pydata.org/pandas-docs/stable/io.html#io-store-in-csv)
 
