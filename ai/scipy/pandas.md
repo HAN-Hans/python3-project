@@ -92,10 +92,10 @@ Pandas的两个主要数据结构[`Series`](http://pandas.pydata.org/pandas-docs
 * 内存高效的“稀疏”版本的标准数据结构, 用于存储大部分缺失或大部分不变的数据(某些固定值). 
 * 移动窗口统计(滚动平均值, 滚动标准偏差等)
 
-| Dimensions | Name | Description |
-| --- | --- | --- |
-| 1 | Series | 1D labeled homogeneously-typed array |
-| 2 | DataFrame | General 2D labeled, size-mutable tabular structure with potentially heterogeneously-typed column |
+| Dimensions | Name      | Description                                                                                      |
+| ---------- | --------- | ------------------------------------------------------------------------------------------------ |
+| 1          | Series    | 1D labeled homogeneously-typed array                                                             |
+| 2          | DataFrame | General 2D labeled, size-mutable tabular structure with potentially heterogeneously-typed column |
 
 ### 为什么有多个数据结构
 

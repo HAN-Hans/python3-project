@@ -1,5 +1,41 @@
 # Numpy快速入门教程
 
+<!-- TOC -->
+
+- [Numpy快速入门教程](#numpy快速入门教程)
+    - [先决条件](#先决条件)
+    - [基础知识](#基础知识)
+        - [一个例子](#一个例子)
+        - [数组创建](#数组创建)
+        - [打印数组](#打印数组)
+        - [基本操作](#基本操作)
+        - [通用功能](#通用功能)
+        - [索引, 切片和迭代](#索引-切片和迭代)
+    - [形状操纵](#形状操纵)
+        - [改变数组的形状](#改变数组的形状)
+        - [堆叠不同的数组](#堆叠不同的数组)
+        - [将一个数组拆分成几个较小的数组](#将一个数组拆分成几个较小的数组)
+    - [副本和视图](#副本和视图)
+        - [全部没有复制](#全部没有复制)
+        - [查看或浅拷贝](#查看或浅拷贝)
+        - [深拷贝](#深拷贝)
+    - [少基础](#少基础)
+        - [广播规则](#广播规则)
+    - [花式索引和索引技巧](#花式索引和索引技巧)
+        - [使用索引数组进行索引](#使用索引数组进行索引)
+        - [使用布尔数组进行索引](#使用布尔数组进行索引)
+        - [ix_()函数](#ix_函数)
+        - [用字符串索引](#用字符串索引)
+    - [线性代数](#线性代数)
+        - [简单数组操作](#简单数组操作)
+    - [技巧和提示](#技巧和提示)
+        - [“自动”整形](#自动整形)
+        - [矢量堆叠](#矢量堆叠)
+        - [直方图](#直方图)
+    - [进一步阅读](#进一步阅读)
+
+<!-- /TOC -->
+
 ## 先决条件
 
 在阅读本教程之前, 您应该了解一些Python. 如果您想重温记忆, 请查看[Python教程](http://docs.python.org/tut/). 
@@ -166,9 +202,9 @@ array([ 0.  ,  0.25,  0.5 ,  0.75,  1.  ,  1.25,  1.5 ,  1.75,  2.  ])
 
 当您打印数组时, NumPy以与嵌套列表类似的方式显示它, 但具有以下布局：
 
-*   最后一个轴从左到右打印, 
-*   倒数第二个从上到下打印, 
-*   其余部分也从上到下打印, 每个切片用空行分隔. 
+* 最后一个轴从左到右打印, 
+* 倒数第二个从上到下打印, 
+* 其余部分也从上到下打印, 每个切片用空行分隔. 
 
 然后将一维数组打印为行, 将二维数据打印为矩阵, 将三维数据打印为矩阵列表. 
 
@@ -420,9 +456,9 @@ array([40, 41, 42, 43])
 
 的**点**（`...`根据需要, 以产生一个完整的索引元组）表示为许多冒号. 例如, if `x`是一个包含5个轴的数组, 那么
 
-*   `x[1,2,...]`相当于`x[1,2,:,:,:]`, 
-*   `x[...,3]`以`x[:,:,:,:,3]`和
-*   `x[4,...,5,:]`到`x[4,:,:,5,:]`. 
+* `x[1,2,...]`相当于`x[1,2,:,:,:]`, 
+* `x[...,3]`以`x[:,:,:,:,3]`和
+* `x[4,...,5,:]`到`x[4,:,:,5,:]`. 
 
 ```python
 >>> c = np.array( [[[  0,  1,  2],      # a 3D array (two stacked 2D arrays)
@@ -616,7 +652,7 @@ array([1, 2, 3, 0, 4])
 
 [`hstack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.hstack.html#numpy.hstack "numpy.hstack"),  [`vstack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vstack.html#numpy.vstack "numpy.vstack"),  [`column_stack`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.column_stack.html#numpy.column_stack "numpy.column_stack"),  [`concatenate`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.concatenate.html#numpy.concatenate "numpy.concatenate"),  [`c_`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.c_.html#numpy.c_ "numpy.c_"),  [`r_`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.r_.html#numpy.r_ "numpy.r_")
 
-### 将一个数组拆分成几个较小的数组[](https://docs.scipy.org/doc/numpy/user/quickstart.html#splitting-one-array-into-several-smaller-ones "永久链接到这个标题")
+### 将一个数组拆分成几个较小的数组
 
 使用时[`hsplit`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.hsplit.html#numpy.hsplit "numpy.hsplit"), 可以沿着水平轴分割数组, 方法是指定要返回的形状相同的数组的数量, 或者通过指定应该进行除法的列：
 
@@ -938,8 +974,6 @@ array([[0, 1, 2, 3],
 >>> plt.show()
 ```
 
-![../_images/quickstart-1.png](http://upload-images.jianshu.io/upload_images/13148580-4ce87317101dd202.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 使用布尔值进行索引的第二种方法更类似于整数索引; 对于数组的每个维度, 我们给出一个1D布尔数组, 选择我们想要的切片：
 
 ```python
@@ -1158,8 +1192,8 @@ xy = np.hstack([x,y])                     # xy =([0,2,4,6,8,0,1,2,3,4])
 
 ## 进一步阅读
 
-*   在[Python的教程](http://docs.python.org/tutorial/)
-*   [NumPy参考](https://docs.scipy.org/doc/numpy/reference/index.html#reference)
-*   [SciPy教程](https://docs.scipy.org/doc/scipy/reference/tutorial/index.html)
-*   [SciPy讲义](http://www.scipy-lectures.org/)
-*   [MATLAB, R, IDL, NumPy的/ SciPy的字典](http://mathesaurus.sf.net/)
+* [Python的教程](http://docs.python.org/tutorial/)
+* [NumPy参考](https://docs.scipy.org/doc/numpy/reference/index.html#reference)
+* [SciPy教程](https://docs.scipy.org/doc/scipy/reference/tutorial/index.html)
+* [SciPy讲义](http://www.scipy-lectures.org/)
+* [MATLAB, R, IDL, NumPy的/ SciPy的字典](http://mathesaurus.sf.net/)
