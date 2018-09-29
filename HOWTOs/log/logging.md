@@ -66,7 +66,7 @@
 
 ## 基础日志教程
 
-日志记录是一种跟踪某些软件运行时发生的事件的方法。该软件的开发人员将日志记录调用添加到其代码中，以指示已发生某些事件。通过描述性消息描述事件，该消息可以可选地包含可变数据(即，对于事件的每次出现可能不同的数据)。事件也具有开发人员对事件的重要性; 重要性也可以称为*leval* 或*严重程度*。
+日志记录是一种跟踪某些软件运行时发生的事件的方法。该软件的开发人员将日志记录调用添加到其代码中，以指示已发生某些事件。通过描述性消息描述事件，该消息可以可选地包含可变数据(即，对于事件的每次出现可能不同的数据)。事件也具有开发人员对事件的重要性; 重要性也可以称为*levael* 或*severity*。
 
 ### 何时使用日志记录
 
@@ -106,7 +106,7 @@ logging.info('I told you so')  # will not print anything
 
 如果您在脚本中键入这些行并运行它，您将看到：
 
-```python
+```
 WARNING:root:Watch out!
 ```
 
@@ -126,7 +126,7 @@ logging.warning('And this, too')
 
 现在，如果我们打开文件并查看我们的内容，我们应该找到日志消息：
 
-```python
+```
 DEBUG:root:This message should go to the log file
 INFO:root:So should this
 WARNING:root:And this, too
@@ -136,7 +136,7 @@ WARNING:root:And this, too
 
 如果要从命令行选项设置日志记录级别，例如：
 
-```python
+```
 --log=INFO
 ```
 
@@ -146,7 +146,7 @@ WARNING:root:And this, too
 getattr(logging, loglevel.upper())
 ```
 
-获取您将通过*level* 参数传递给[`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig "logging.basicConfig")的*值*。您可能希望错误检查任何用户输入值，可能如下例所示：
+您将通过*level* 参数传递给[`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig "logging.basicConfig")的的时候，您可能希望对任何用户输入值进行错误检查，如下例所示：
 
 ```python
 # assuming loglevel is bound to the string value obtained from the
@@ -158,9 +158,9 @@ if not isinstance(numeric_level, int):
 logging.basicConfig(level=numeric_level, ...)
 ```
 
-呼叫[`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig "logging.basicConfig")应该*在*任何呼叫*之前*进行[`debug()`](https://docs.python.org/3/library/logging.html#logging.debug "logging.debug")， [`info()`](https://docs.python.org/3/library/logging.html#logging.info "logging.info")等等。因为它是一次性的简单配置设施，只有第一次呼叫实际上会做任何事情：后续呼叫实际上是无操作。
+调用[`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig "logging.basicConfig")应该在任何调用[`debug()`](https://docs.python.org/3/library/logging.html#logging.debug "logging.debug")， [`info()`](https://docs.python.org/3/library/logging.html#logging.info "logging.info")等等*之前*进行。因为它是一次性的简单配置设施，只有第一次配置后才有效后续调用实际上无效的。
 
-如果多次运行上述脚本，则连续运行的消息将附加到文件*example.log中*。如果您希望每次运行重新开始，而不记住先前运行的消息，则可以 通过将上例中的调用更改为：来指定*filemode*参数：
+如果多次运行上述脚本，则连续运行的消息将附加到文件*example.log*。如果您希望每次运行重新开始，而不记住先前运行的消息，则可以 通过将上例中的调用更改为：来指定*filemode*参数：
 
 ```python
 logging.basicConfig(filename='example.log', filemode='w', level=logging.DEBUG)
@@ -195,15 +195,15 @@ def do_something():
     logging.info('Doing something')
 ```
 
-如果你运行*myapp.py*，你应该在*myapp.log中*看到这个：
+如果你运行*myapp.py*，你应该在*myapp.log*看到这个：
 
-```python
+```
 INFO:root:Started
 INFO:root:Doing something
 INFO:root:Finished
 ```
 
-希望你期待看到的是什么。您可以使用*mylib.py中*的模式将此概括为多个模块。请注意，这个简单的使用模式，你不会知道，通过查看日志文件，在应用程序中邮件的来源，除了查看事件的描述。如果要跟踪消息的位置，则需要参考教程级别之外的文档 - 请参阅 [高级日志教程](https://docs.python.org/3/howto/logging.html#logging-advanced-tutorial)。
+你期待看到的是什么，您可以使用*mylib.py*中的模式将应用到多个模块。请注意，这个简单的使用实例中，通过查看日志文件，除了查看事件的描述，你不会知道，在应用程序中信息的来源。如果要跟踪消息的位置，则需要参考教程级别之外的文档 - 请参阅 [高级日志教程](https://docs.python.org/3/howto/logging.html#logging-advanced-tutorial)。
 
 ### 记录变量数据
 
@@ -216,11 +216,11 @@ logging.warning('%s before you %s', 'Look', 'leap!')
 
 将显示：
 
-```python
+```
 WARNING:root:Look before you leap!
 ```
 
-如您所见，将可变数据合并到事件描述消息中使用旧的％样式字符串格式。这是为了向后兼容：日志包提前更新格式化选项，如 [`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")和[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")。这些新的格式选项*支持，但他们探索本教程的范围之内：看[在你的应用程序中使用特定的格式类型](https://docs.python.org/3/howto/logging-cookbook.html#formatting-styles)以获取更多信息。
+如您所见，将可变数据合并到事件描述消息中使用旧的％样式字符串格式。这是为了向后兼容：日志包提前更新的格式化选项，如 [`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")和[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")。这些新的格式选项支持，但他们探索本教程的范围之内：看[在你的应用程序中使用特定的格式类型](https://docs.python.org/3/howto/logging-cookbook.html#formatting-styles)以获取更多信息。
 
 ### 更改显示消息的格式
 
@@ -234,9 +234,9 @@ logging.info('So should this')
 logging.warning('And this, too')
 ```
 
-哪个会打印：
+那个会打印：
 
-```python
+```
 DEBUG:This message should appear on the console
 INFO:So should this
 WARNING:And this, too
@@ -256,7 +256,7 @@ logging.warning('is when this event was logged.')
 
 应该打印这样的东西：
 
-```python
+```
 2010-12-12 11:41:42,612 is when this event was logged.
 ```
 
@@ -270,11 +270,11 @@ logging.warning('is when this event was logged.')
 
 这会显示如下：
 
-```python
+```
 12/12/2010 11:46:36 AM is when this event was logged.
 ```
 
-*datefmt*参数的格式与支持的格式相同 [`time.strftime()`](https://docs.python.org/3/library/time.html#time.strftime "time.strftime")。
+*datefmt*参数的格式与[`time.strftime()`](https://docs.python.org/3/library/time.html#time.strftime "time.strftime")支持的格式相同 。
 
 ### 后续步骤
 
@@ -297,7 +297,7 @@ logging.warning('is when this event was logged.')
 
 日志事件信息在`LogRecod`实例中的记录器，处理程序，过滤器和格式化程序之间传递。
 
-通过在[`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger") 类的实例上调用方法(以下称为 *logger* )来执行日志*记录*。每个实例都有一个名称，它们在概念上以点(句点)作为分隔符排列在命名空间层次结构中。例如，名为“scan”的记录器是记录器'scan.text'，'scan.html'和'scan.pdf'的父级。记录器名称可以是您想要的任何名称，并指示记录消息源自的应用程序区域。
+通过在[`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger") 类的实例上调用方法(以下称为 *logger* )来执行日志记录。每个实例都有一个名称，它们在概念上以点(句点)作为分隔符排列在命名空间层次结构中。例如，名为'scan'的记录器是记录器'scan.text'，'scan.html'和'scan.pdf'的父级。记录器名称可以是您想要的任何名称，并指示记录消息源自的应用程序区域。
 
 在命名记录器时使用的一个好习惯是在每个使用日志记录的模块中使用模块级记录器，命名如下：
 
@@ -309,13 +309,13 @@ logger = logging.getLogger(__name__)
 
 记录器层次结构的根称为根记录器。这是由函数使用的记录[`debug()`](https://docs.python.org/3/library/logging.html#logging.debug "logging.debug")，[`info()`](https://docs.python.org/3/library/logging.html#logging.info "logging.info")，[`warning()`](https://docs.python.org/3/library/logging.html#logging.warning "logging.warning")， [`error()`](https://docs.python.org/3/library/logging.html#logging.error "logging.error")和[`critical()`](https://docs.python.org/3/library/logging.html#logging.critical "logging.critical")，这只是调用根记录的同名方法。功能和方法具有相同的签名。根记录器的名称在记录的输出中打印为“root”。
 
-当然，可以将消息记录到不同的目的地。软件包中包含支持，用于将日志消息写入文件，HTTP GET/POST位置，通过SMTP发送电子邮件，通用套接字，队列或特定于操作系统的日志记录机制(如syslog或Windows NT事件日志)。目标由`handler`类提供。如果您有任何内置处理程序类未满足的特殊要求，则可以创建自己的日志目标类。
+当然，可以将消息记录到不同的目的地。logging包中包含支持: 用于将日志消息写入文件，HTTP GET/POST位置，通过SMTP发送电子邮件，通用套接字，队列或特定于操作系统的日志记录机制(如syslog或Windows NT事件日志)。目标由`handler`类提供。如果您有任何内置处理程序类未满足的特殊要求，则可以创建自己的日志目标类。
 
 默认情况下，没有为任何日志记录消息设置目标。您可以使用[`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig "logging.basicConfig")教程示例中的as指定目标(例如控制台或文件)。如果你调用的函数 [`debug()`](https://docs.python.org/3/library/logging.html#logging.debug "logging.debug")，[`info()`](https://docs.python.org/3/library/logging.html#logging.info "logging.info")， [`warning()`](https://docs.python.org/3/library/logging.html#logging.warning "logging.warning")，[`error()`](https://docs.python.org/3/library/logging.html#logging.error "logging.error")和[`critical()`](https://docs.python.org/3/library/logging.html#logging.critical "logging.critical")，他们会检查，看看是否未设置目标; 如果未设置，则`sys.stderr`在委派给根记录器执行实际消息输出之前，他们将设置console()的目标和显示消息的默认格式。
 
 [`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig "logging.basicConfig")消息设置的默认格式为：
 
-```python
+```
 severity:logger name:message
 ```
 
@@ -329,15 +329,15 @@ severity:logger name:message
 
 ### 记录器
 
-[`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger")对象有三重的工作。首先，它们向应用程序代码公开了几种方法，以便应用程序可以在运行时记录消息 其次，记录器对象根据严重性(默认过滤工具)或过滤器对象确定要处理的日志消息。第三，记录器对象将相关的日志消息传递给所有感兴趣的日志处理程序。
+[`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger")对象有三重的作用。首先，它们向应用程序代码公开了几种方法，以便应用程序可以在运行时记录消息 其次，记录器对象根据严重性(默认过滤工具)或过滤器对象确定要处理的日志消息。第三，记录器对象将相关的日志消息传递给所有感兴趣的日志处理程序。
 
 记录器对象上使用最广泛的方法分为两类：配置和消息发送。
 
 这些是最常见的配置方法：
 
 * [`Logger.setLevel()`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel "logging.Logger.setLevel")指定记录器将处理的最低严重性日志消息，其中debug是最低内置严重性级别，critical是最高内置严重性级别。例如，如果严重性级别为INFO，则记录器将仅处理INFO，WARNING，ERROR和CRITICAL消息，并将忽略DEBUG消息。
-* [`Logger.addHandler()`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler "logging.Logger.addHandler")并[`Logger.removeHandler()`](https://docs.python.org/3/library/logging.html#logging.Logger.removeHandler "logging.Logger.removeHandler")从logger对象添加和删除处理程序对象。处理程序中详细介绍了[Handlers](https://docs.python.org/3/howto/logging.html#handler-basic)。
-* [`Logger.addFilter()`](https://docs.python.org/3/library/logging.html#logging.Logger.addFilter "logging.Logger.addFilter")并[`Logger.removeFilter()`](https://docs.python.org/3/library/logging.html#logging.Logger.removeFilter "logging.Logger.removeFilter")从记录器对象中添加和删除过滤器对象。过滤器对象中详细介绍了[Filtters](https://docs.python.org/3/library/logging.html#filter)。
+* [`Logger.addHandler()`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler "logging.Logger.addHandler")和[`Logger.removeHandler()`](https://docs.python.org/3/library/logging.html#logging.Logger.removeHandler "logging.Logger.removeHandler")从logger对象添加和删除处理程序对象。处理程序中详细介绍了[Handlers](https://docs.python.org/3/howto/logging.html#handler-basic)。
+* [`Logger.addFilter()`](https://docs.python.org/3/library/logging.html#logging.Logger.addFilter "logging.Logger.addFilter")和[`Logger.removeFilter()`](https://docs.python.org/3/library/logging.html#logging.Logger.removeFilter "logging.Logger.removeFilter")从记录器对象中添加和删除过滤器对象。过滤器对象中详细介绍了[Filtters](https://docs.python.org/3/library/logging.html#filter)。
 
 您不需要始终在您创建的每个记录器上调用这些方法。请参阅本节的最后两段。
 
@@ -347,19 +347,19 @@ severity:logger name:message
 * [`Logger.exception()`](https://docs.python.org/3/library/logging.html#logging.Logger.exception "logging.Logger.exception")创建类似于的日志消息 [`Logger.error()`](https://docs.python.org/3/library/logging.html#logging.Logger.error "logging.Logger.error")。不同之处在于[`Logger.exception()`](https://docs.python.org/3/library/logging.html#logging.Logger.exception "logging.Logger.exception")转储堆栈跟踪。仅从异常处理程序调用此方法。
 * [`Logger.log()`](https://docs.python.org/3/library/logging.html#logging.Logger.log "logging.Logger.log")将日志级别作为显式参数。对于记录消息而言，这比使用上面列出的日志级别便捷方法要详细一些，但这是如何记录自定义日志级别。
 
-[`getLogger()`](https://docs.python.org/3/library/logging.html#logging.getLogger "logging.getLogger")如果提供了指定名称，则返回对具有指定名称的记录器实例的引用，否则返回`root`。名称是以句点分隔的层次结构。[`getLogger()`](https://docs.python.org/3/library/logging.html#logging.getLogger "logging.getLogger")具有相同名称的多次调用将返回对同一记录器对象的引用。在分层列表中较低的记录器是列表中较高的记录器的子项。例如，给定一个记录器使用的名称`foo`，记录仪用的名字 `foo.bar`，`foo.bar.baz`以及`foo.bam`是所有后代`foo`。
+[`getLogger()`](https://docs.python.org/3/library/logging.html#logging.getLogger "logging.getLogger")如果提供了指定名称，则返回对具有指定名称的记录器实例的引用，否则返回`root`。名称是以`.`(点号)分隔层次结构，[`getLogger()`](https://docs.python.org/3/library/logging.html#logging.getLogger "logging.getLogger")具有相同名称的多次调用将返回对同一记录器对象的引用，在分层列表中较低的记录器是列表中较高的记录器的子项。例如，给定一个记录器使用的名称`foo`，记录仪用的名字 `foo.bar`，`foo.bar.baz`以及`foo.bam`是所有后代`foo`。
 
-记录器具有*有效leval*的概念。如果未在记录器上显式设置级别，则使用其父级别作为其有效级别。如果家长没有明确的级别设置，*其*母公司检查，等等-所有祖先之前，搜索明确设置级别被发现。根记录器始终具有显式级别集(`WARNING`默认情况下)。在决定是否处理事件时，记录器的有效级别用于确定事件是否传递给记录器的处理程序。
+记录器具有*有效级别*的概念。如果未在记录器上显式设置级别，则使用其父级别作为其有效级别。如果父记录器也没有明确的级别设置，则检查祖先记录器，直到搜索明确设置级别的祖先记录器被发现。根记录器始终具有显式级别集(`WARNING`默认情况下)。在决定是否处理事件时，记录器的有效级别用于确定事件是否传递给记录器的处理程序。
 
-子记录器将消息传播到与其祖先记录器相关联的处理程序。因此，不必为应用程序使用的所有记录器定义和配置处理程序。为顶级记录器配置处理程序并根据需要创建子记录器就足够了。(但是，您可以通过将 记录器的*传播*属性设置为来关闭传播`False`。)
+子记录器将消息传播到与其祖先记录器相关联的处理程序。因此，不必为应用程序使用的所有记录器定义和配置处理程序。为顶级记录器配置处理程序并根据需要创建子记录器就足够了。(但是，您可以通过将 记录器的*propagate*属性设置为`False`来关闭传播。)
 
 ### 处理程序
 
 [`Handler`](https://docs.python.org/3/library/logging.html#logging.Handler "logging.Handler")对象负责将适当的日志消息(基于日志消息的严重性)分派给处理程序的指定目标。 [`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger")对象可以使用[`addHandler()`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler "logging.Logger.addHandler")方法向自己添加零个或多个处理程序对象。作为示例场景，应用程序可能希望将所有日志消息发送到日志文件，将错误或更高的所有日志消息发送到标准输出，以及对至关重要的所有消息发送电子邮件。此方案需要三个单独的处理程序，其中每个处理程序负责将特定严重性的消息发送到特定位置。
 
-标准库包含很多处理程序类型(请参阅 [有用的处理程序](https://docs.python.org/3/howto/logging.html#useful-handlers)); 教程主要使用[`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "logging.StreamHandler")并 [`FileHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.FileHandler "logging.FileHandler")在其示例中使用。
+标准库包含很多处理程序类型(请参阅 [有用的处理程序](https://docs.python.org/3/howto/logging.html#useful-handlers))，教程主要使用[`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "logging.StreamHandler")和[`FileHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.FileHandler "logging.FileHandler")在其示例中使用。
 
-处理程序中很少有方法可供应用程序开发人员关注。与使用内置处理程序对象(即不创建自定义处理程序)的应用程序开发人员相关的唯一处理程序方法是以下配置方法：
+处理程序中很少有方法可供应用程序开发人员关注，与使用内置处理程序对象(即不创建自定义处理程序)的应用程序开发人员相关的唯一处理程序方法是以下配置方法：
 
 * 该[`setLevel()`](https://docs.python.org/3/library/logging.html#logging.Handler.setLevel "logging.Handler.setLevel")方法与logger对象一样，指定将分派到适当目标的最低严重性。为什么有两种`setLevel()`方法？记录器中设置的级别确定将传递给其处理程序的消息的严重性。每个处理程序中设置的级别确定处理程序将发送哪些消息。
 * [`setFormatter()`](https://docs.python.org/3/library/logging.html#logging.Handler.setFormatter "logging.Handler.setFormatter") 选择要使用的此处理程序的Formatter对象。
@@ -377,11 +377,11 @@ logging.Formatter.__init__(fmt=None，datefmt=None，style='％')
 
 如果没有消息格式字符串，则默认使用原始消息。如果没有日期格式字符串，则默认日期格式为：
 
-```python
+```
 %Y-%m-%d %H:%M:%S
 ```
 
-最后加上毫秒数。它`style`是％, '{'或'$'之一。如果未指定其中一个，则使用'％'。
+`style`是'％', '{'或'$'之一。如果未指定其中一个，则使用'％'。
 
 如果`style`是'％'，则消息格式字符串使用`%(<dictionary key>)s`[](https://docs.python.org/3/library/logging.html#logrecord-attributes)样式字符串替换; [LogRecord属性](https://docs.python.org/3/library/logging.html#logrecord-attributes)中记录了可能的键。如果样式为“{”，则假定消息格式字符串与[`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")(使用关键字参数)兼容，而如果样式为'$'，则消息格式字符串应符合预期的[`string.Template.substitute()`](https://docs.python.org/3/library/string.html#string.Template.substitute "string.Template.substitute")格式。
 
@@ -435,7 +435,7 @@ logger.critical('critical message')
 
 从命令行运行此模块将生成以下输出：
 
-```python
+```sh
 $ python simple_logging_module.py
 2005-03-19 15:10:26,618 - simple_example - DEBUG - debug message
 2005-03-19 15:10:26,620 - simple_example - INFO - info message
@@ -498,7 +498,7 @@ datefmt=
 
 输出几乎与基于非配置文件的示例相同：
 
-```python
+```sh
 $ python simple_logging_config.py
 2005-03-19 15:38:55,977 - simpleExample - DEBUG - debug message
 2005-03-19 15:38:55,979 - simpleExample - INFO - info message
@@ -561,11 +561,11 @@ root:
 
 ### 配置库的日志记录
 
-在开发使用日志记录的库时，您应该注意记录库如何使用日志记录 - 例如，使用的记录器的名称。还需要考虑其日志记录配置。如果using应用程序不使用日志记录，并且库代码进行日志记录调用，则(如上一节所述)`WARNING`将打印严重性和更高级别的事件 `sys.stderr`。这被认为是最好的默认行为。
+在开发使用日志记录的python库时，您应该注意python库如何使用日志记录 - 例如，使用的记录器的名称。还需要考虑其日志记录配置。如果应用程序中不使用loggging，但是库代码进行日志记录调用，则(如上一节所述)将打印严重性`WARNING`和更高级别的事件 到`sys.stderr`。这被认为是最好的默认行为。
 
-如果由于某种原因您不希望在没有任何日志记录配置的情况下打印这些消息，则可以将无操作处理程序附加到库的顶级记录器。这样可以避免打印消息，因为将始终为库的事件找到处理程序：它不会产生任何输出。如果库用户配置日志以供应用程序使用，可能是配置将添加一些处理程序，如果级别已适当配置，则在库代码中进行的日志记录调用将正常地将输出发送给这些处理程序。
+如果由于某种原因您不希望在没有任何日志记录配置的情况下打印这些消息，则可以将无操作处理程序附加到库的顶级记录器。这样可以避免打印消息，因为将始终为库的事件找到处理程序：它不会产生任何输出。如果库用户配置日志以供应用程序使用，可能会在配置中添加一些处理程序，并且级别，则在库代码中进行的日志记录调用将正常地将输出发送给这些处理程序。
 
-日志包中包含一个do-nothing处理程序:( [`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")自Python 3.1起)。可以将此处理程序的实例添加到库使用的日志记录命名空间的顶级记录器中(*如果*要`sys.stderr`在没有日志记录配置的情况下阻止将库的记录事件输出到 )。如果库*foo的*所有日志记录都是使用名称匹配'foo.x'，'foo.x.y'等的记录器完成的，那么代码：
+日志包中包含一个do-nothing处理程序( [`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")自Python 3.1起)。可以将此处理程序的实例添加到库使用的日志记录命名空间的顶级记录器中(如果要`sys.stderr`在没有日志记录配置的情况下阻止将库的记录事件输出到 )。如果库*foo的*所有日志记录都是使用名称匹配'foo.x'，'foo.x.y'等的记录器完成的，那么代码：
 
 ```python
 import logging
@@ -601,7 +601,7 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 
 ### 自定义级别
 
-定义您自己的leval是可能的，但不一定是必要的，因为现有leval是根据实践经验选择的。但是，如果您确信需要自定义级别，则在执行此操作时应特别小心，*如果您正在开发库，则定义自定义级别*可能是*一个非常糟糕的主意*。这是因为如果多个库作者都定义了他们自己的自定义级别，那么使用开发人员很难控制和/或解释这些多个库的日志记录输出，因为给定的数值可能意味着不同的东西对于不同的图书馆
+你可以定义自己的leval，但不一定是必要的，因为现有leval是根据实践经验选择的。但是，如果您确信需要自定义级别，则在执行此操作时应特别小心，*如果您正在开发库，则定义自定义级别*可能是*一个非常糟糕的主意*。这是因为如果多个库作者都定义了他们自己的自定义级别，那么使用开发人员很难控制和/或解释这些多个库的日志记录输出，因为给定的数值可能意味着不同的东西对于不同的图书馆
 
 ### 有用的处理程序
 
@@ -623,17 +623,17 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 14. [`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")实例将消息发送到队列，例如在[`queue`](https://docs.python.org/3/library/queue.html#module-queue "queue：同步的队列类。")或[`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing "多处理：基于进程的并行性。")模块中实现的那些队列。
 15. [`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")实例不执行任何错误消息。它们由想要使用日志记录的库开发人员使用，但是希望避免“如果库用户未配置日志记录，则可以显示”没有找到记录器XXX的处理程序“消息。有关更多信息，请参阅[配置库的日志记录](https://docs.python.org/3/howto/logging.html#library-config)。
 
-新的3.1版：的[`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")类。
+新的3.1版：的`NullHandler`类。
 
-新版本3.2：在[`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")类。
+新版本3.2：在`QueueHandler`类。
 
-[`NullHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler "logging.NullHandler")，[`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "logging.StreamHandler")和[`FileHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.FileHandler "logging.FileHandler") 类在核心日志包中定义。其他处理程序在子模块中定义[`logging.handlers`](https://docs.python.org/3/library/logging.handlers.html#module-logging.handlers "logging.handlers：日志记录模块的处理程序。")。(还有另一个子模块[`logging.config`](https://docs.python.org/3/library/logging.config.html#module-logging.config "logging.config：日志记录模块的配置。")，用于配置功能。)
+`NullHandler`，`StreamHandler`和`FileHandler`类在核心日志包中定义。其他处理程序在子模块中定义[`logging.handlers`](https://docs.python.org/3/library/logging.handlers.html#module-logging.handlers "logging.handlers：日志记录模块的处理程序。")。(还有另一个子模块[`logging.config`](https://docs.python.org/3/library/logging.config.html#module-logging.config "logging.config：日志记录模块的配置。")，用于配置功能。)
 
-记录的消息被格式化以便通过[`Formatter`](https://docs.python.org/3/library/logging.html#logging.Formatter "logging.Formatter")类的实例进行呈现 。它们使用适合与％运算符和字典一起使用的格式字符串进行初始化。
+记录的消息被格式化以便通过`Formatter`类的实例进行呈现 。它们使用适合与％运算符和字典一起使用的格式字符串进行初始化。
 
 对于批量格式化多个消息，`BufferingFormatter`可以使用实例 。除了格式字符串(应用于批处理中的每个消息)之外，还提供了标题和尾部格式字符串。
 
-当基于记录器级和/或处理过滤leval是不够的，的实例[`Filter`](https://docs.python.org/3/library/logging.html#logging.Filter "logging.Filter")可以被添加到两个[`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger")和 [`Handler`](https://docs.python.org/3/library/logging.html#logging.Handler "logging.Handler")实例(通过他们的[`addFilter()`](https://docs.python.org/3/library/logging.html#logging.Handler.addFilter "logging.Handler.addFilter")方法)。在决定进一步处理消息之前，记录器和处理程序都会查询其所有过滤器以获取权限。如果任何过滤器返回false值，则不会进一步处理该消息。
+当基于记录器级和/或处理过滤leval是不够的，的实例[`Filter`](https://docs.python.org/3/library/logging.html#logging.Filter "logging.Filter")可以被添加到[`Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "logging.Logger")和 [`Handler`](https://docs.python.org/3/library/logging.html#logging.Handler "logging.Handler")实例(通过他们的`addFilter()`方法)。在决定进一步处理消息之前，记录器和处理程序都会查询其所有过滤器以获取权限。如果任何过滤器返回false值，则不会进一步处理该消息。
 
 基本[`Filter`](https://docs.python.org/3/library/logging.html#logging.Filter "logging.Filter")功能允许按特定记录器名称进行过滤。如果使用此功能，则允许通过过滤器发送到指定记录器及其子项的消息，并删除所有其他消息。
 
@@ -643,7 +643,7 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 
 [`SystemExit`](https://docs.python.org/3/library/exceptions.html#SystemExit "SystemExit")和[`KeyboardInterrupt`](https://docs.python.org/3/library/exceptions.html#KeyboardInterrupt "一个KeyboardInterrupt")异常从未吞噬。在子类[`emit()`](https://docs.python.org/3/library/logging.html#logging.Handler.emit "logging.Handler.emit")方法期间发生的其他异常[`Handler`](https://docs.python.org/3/library/logging.html#logging.Handler "logging.Handler")将传递给其[`handleError()`](https://docs.python.org/3/library/logging.html#logging.Handler.handleError "logging.Handler.handleError") 方法。
 
-[`handleError()`](https://docs.python.org/3/library/logging.html#logging.Handler.handleError "logging.Handler.handleError")in [`Handler`](https://docs.python.org/3/library/logging.html#logging.Handler "logging.Handler") 检查的默认实现，以查看是否设置了模块级变量`raiseExceptions`。如果设置，则打印回溯[`sys.stderr`](https://docs.python.org/3/library/sys.html#sys.stderr "sys.stderr")。如果未设置，则吞下异常。
+`handleError()`in `Handler` 检查的默认实现，以查看是否设置了模块级变量`raiseExceptions`。如果设置，则打印回溯`sys.stderr`。如果未设置，则吞下异常。
 
 注意
 
@@ -677,7 +677,7 @@ if logger.isEnabledFor(logging.DEBUG):
 | 线程信息 | 设置`logging.logThreads`为`0`。 |
 | 处理信息 | 设置`logging.logProcesses`为`0`。 |
 
-另请注意，核心日志记录模块仅包含基本处理程序。如果您不导入[`logging.handlers`](https://docs.python.org/3/library/logging.handlers.html#module-logging.handlers "logging.handlers：日志记录模块的处理程序。")和[`logging.config`](https://docs.python.org/3/library/logging.config.html#module-logging.config "logging.config：日志记录模块的配置。")，就不会占用任何内存。
+另请注意，核心日志记录模块仅包含基本处理程序。如果您不导入[  `logging.handlers`](https://docs.python.org/3/library/logging.handlers.html#module-logging.handlers "logging.handlers：日志记录模块的处理程序。")和[`logging.config`](https://docs.python.org/3/library/logging.config.html#module-logging.config "logging.config：日志记录模块的配置。")，就不会占用任何内存。
 
 ---
 
@@ -745,7 +745,7 @@ def some_function():
 
 输出如下：
 
-```python
+```
 2018-09-23 15:57:30,687 - spam_application - INFO - creating an instance of auxiliary_module.Auxiliary
 2018-09-23 15:57:30,687 - spam_application.auxiliary.Auxiliary - INFO - creating an instance of Auxiliary
 2018-09-23 15:57:30,687 - spam_application - INFO - created an instance of auxiliary_module.Auxiliary
@@ -760,7 +760,7 @@ def some_function():
 
 ### 从多个线程记录
 
-从多个线程进行日志记录不需要特别的努力。以下示例显示了从主(初始)线程和另一个线程进行的日志记录：
+从多个线程进行日志记录不需要特别的技巧。以下示例显示了从主(初始)线程和另一个线程进行的日志记录：
 
 ```python
 import logging
@@ -792,7 +792,7 @@ if __name__ == '__main__':
 
 运行时，脚本应该打印如下内容：
 
-```python
+```
    0 Thread-1 Hi from myfunc
    3 MainThread Hello from main
  505 Thread-1 Hi from myfunc
@@ -847,7 +847,7 @@ logger.critical('critical message')
 
 请注意，“应用程序”代码不关心多个处理程序。所有改变的是添加和配置名为*fh*的新处理程序。
 
-在编写和测试应用程序时，创建具有更高或更低严重性过滤器的新处理程序的能力非常有用。`print`使用`logger.debug`：与您必须删除或稍后注释掉的print语句不同，logger.debug语句可以在源代码中保持不变，并且在您再次需要它们之前保持休眠状态，而不是使用许多 语句进行调试。那时，唯一需要改变的是修改记录器和/或处理程序的严重性级别以进行调试。
+在编写和测试应用程序时，创建具有更高或更低严重性过滤器的新处理程序的能力非常有用。`print`使用`logger.debug`：与您必须删除或稍后注释掉的print语句不同，logger.debug语句可以在源代码中保持不变，并且在您再次需要它们之前保持休眠状态，而不是使用许多语句进行调试。那时，唯一需要改变的是修改记录器和/或处理程序的严重性级别以进行调试。
 
 ### 记录到多个目的地
 
@@ -887,18 +887,18 @@ logger2.warning('Jail zesty vixen who grabbed pay from quack.')
 logger2.error('The five boxing wizards jump quickly.')
 ```
 
-当你运行它时，你会看到在控制台上
+当你运行它时，你会在控制台上看到
 
-```python
+```
 root        : INFO     Jackdaws love my big sphinx of quartz.
 myapp.area1 : INFO     How quickly daft jumping zebras vex.
 myapp.area2 : WARNING  Jail zesty vixen who grabbed pay from quack.
 myapp.area2 : ERROR    The five boxing wizards jump quickly.
 ```
 
-在文件中你会看到类似的东西
+在tmp.log文件中你会看到类似的东西
 
-```python
+```
 10-22 22:19 root         INFO     Jackdaws love my big sphinx of quartz.
 10-22 22:19 myapp.area1  DEBUG    Quick zephyrs blow, vexing daft Jim.
 10-22 22:19 myapp.area1  INFO     How quickly daft jumping zebras vex.
@@ -970,11 +970,11 @@ print('complete')
 
 有时您必须让您的日志记录处理程序在不阻止您记录的线程的情况下完成工作。这在Web应用程序中很常见，当然它也会在其他场景中出现。
 
-表现出缓慢行为的常见罪魁祸首是 [`SMTPHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.SMTPHandler "logging.handlers.SMTPHandler")：由于开发人员无法控制的多种原因(例如，性能不佳的邮件或网络基础设施)，发送电子邮件可能需要很长时间。但是几乎所有基于网络的处理程序都可以阻止：甚至一个[`SocketHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.SocketHandler "logging.handlers.SocketHandler")操作也可能在底层进行DNS查询，这太慢了(这个查询可以深入套接字库代码，在Python层之下，在你的控件之外)。
+表现出缓慢行为的常见罪魁祸首是 [`SMTPHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.SMTPHandler "logging.handlers.SMTPHandler")：由于开发人员无法控制的多种原因(例如，性能不佳的邮件或网络基础设施)，发送电子邮件可能需要很长时间。但是几乎所有基于网络的处理程序都可以阻止：甚至一个[`SocketHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.SocketHandler "logging.handlers.SocketHandler")操作也可能在底层进行DNS查询，这太慢了(这个查询可以深入socket库代码，在Python层之下，在你的控件之外)。
 
-一种解决方案是使用两部分方法。对于第一部分，仅将a附加 [`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")到从性能关键线程访问的那些记录器。他们只是写入他们的队列，队列可以调整到足够大的容量或初始化，没有上限到他们的大小。通常会快速接受对队列的写入，但您可能需要捕获[`queue.Full`](https://docs.python.org/3/library/queue.html#queue.Full "queue.Full")异常作为代码中的预防措施。如果您是在其代码中具有性能关键线程的库开发人员，请务必记录此文档(以及仅附加`QueueHandlers`到记录器的建议)，以便其他将使用您的代码的开发人员受益。
+有两种解决方案。第一种仅将 [`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")附加到从性能关键线程访问的那些记录器。他们只是写入他们的队列，队列可以调整到足够大的容量或初始化，没有上限到他们的大小。通常会快速接受对队列的写入，但您可能需要捕获[`queue.Full`](https://docs.python.org/3/library/queue.html#queue.Full "queue.Full")异常作为代码中的预防措施。如果您是在其代码中具有性能关键线程的库开发人员，请务必记录此文档(以及仅附加`QueueHandlers`到记录器的建议)，以便其他将使用您的代码的开发人员受益。
 
-解决方案的第二部分[`QueueListener`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueListener "logging.handlers.QueueListener")是设计为对应的[`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")。A [`QueueListener`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueListener "logging.handlers.QueueListener")非常简单：它传递了一个队列和一些处理程序，它会激活一个内部线程，该线程监听其队列中发送的LogRecords `QueueHandlers`(或其他任何来源`LogRecords`)。将`LogRecords`被从队列中删除，并传递到处理程序进行处理。
+解决方案的第二种方法[`QueueListener`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueListener "logging.handlers.QueueListener")是设计为对应的[`QueueHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueHandler "logging.handlers.QueueHandler")。A [`QueueListener`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueListener "logging.handlers.QueueListener")非常简单：它传递了一个队列和一些处理程序，它会激活一个内部线程，该线程监听其队列中发送的LogRecords `QueueHandlers`(或其他任何来源`LogRecords`)。将`LogRecords`被从队列中删除，并传递到处理程序进行处理。
 
 拥有一个单独的[`QueueListener`](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.QueueListener "logging.handlers.QueueListener")类的优点是您可以使用相同的实例来为多个服务提供服务`QueueHandlers`。这比使用现有处理程序类的线程版本更加资源友好，每个处理程序会占用一个线程而没有特别的好处。
 
@@ -1000,7 +1000,7 @@ listener.stop()
 
 在运行时，它将产生：
 
-```python
+```
 MainThread: Look out!
 ```
 
@@ -1125,7 +1125,7 @@ if __name__ == '__main__':
 
 首先运行服务器，然后运行客户端。在客户端，控制台上没有打印任何内容; 在服务器端，你应该看到类似的东西：
 
-```python
+```
 About to start TCP server...
    59 root            INFO     Jackdaws love my big sphinx of quartz.
    59 myapp.area1     DEBUG    Quick zephyrs blow, vexing daft Jim.
@@ -1230,7 +1230,7 @@ if __name__ == '__main__':
 
 在运行时，产生类似于：
 
-```python
+```
 2010-09-06 22:38:15,292 a.b.c DEBUG    IP: 123.231.231.123 User: fred     A debug message
 2010-09-06 22:38:15,300 a.b.c INFO     IP: 192.168.0.1     User: sheila   An info message with some parameters
 2010-09-06 22:38:15,300 d.e.f CRITICAL IP: 127.0.0.1       User: sheila   A message at CRITICAL level with 2 parameters
@@ -1541,7 +1541,7 @@ logging_rotatingfile_example.out.5
 >>>
 ```
 
-记录呼叫(`logger.debug()`，`logger.info()`等)只取位置参数进行实际记录消息本身，只有用于确定如何处理该实际记录的电话选项中使用的关键字参数(例如，`exc_info`关键字参数以指示追溯信息应记录，或`extra`keyword参数，用于指示要添加到日志中的其他上下文信息)。因此，您无法使用[`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")或[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")语法直接进行日志记录调用，因为日志记录包内部使用％-formatting来合并格式字符串和变量参数。在保留向后兼容性的同时不会改变这一点，因为现有代码中的所有日志记录调用都将使用％-format字符串。
+记录调用(`logger.debug()`，`logger.info()`等)只取位置参数进行实际记录消息本身，只有用于确定如何处理该实际记录的电话选项中使用的关键字参数(例如，`exc_info`关键字参数以指示追溯信息应记录，或`extra`keyword参数，用于指示要添加到日志中的其他上下文信息)。因此，您无法使用[`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")或[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")语法直接进行日志记录调用，因为日志记录包内部使用％-formatting来合并格式字符串和变量参数。在保留向后兼容性的同时不会改变这一点，因为现有代码中的所有日志记录调用都将使用％-format字符串。
 
 但是，有一种方法可以使用{} - 和$ - 格式来构建单独的日志消息。回想一下，对于消息，您可以使用任意对象作为消息格式字符串，并且日志包将调用`str()`该对象以获取实际的格式字符串。考虑以下两个类：
 
@@ -2063,7 +2063,7 @@ logging.info(_('message 1', foo='bar', bar='baz', num=123, fnum=123.456))
 
 如果运行上面的脚本，它会打印：
 
-```python
+```
 message 1 >>> {"fnum": 123.456, "num": 123, "bar": "baz", "foo": "bar"}
 ```
 
@@ -2112,7 +2112,7 @@ if __name__ == '__main__':
 
 运行上面的脚本时，它会打印：
 
-```python
+```
 message 1 >>> {"snowman": "\u2603", "set_value": [1, 2, 3]}
 ```
 
@@ -2246,7 +2246,7 @@ $ ls -l chowntest.log
 
 在Python 3.2中，[`Formatter`](https://docs.python.org/3/library/logging.html#logging.Formatter "logging.Formatter")获得了一个`style`关键字参数，该参数虽然默认`%`为向后兼容，但允许指定`{`或`$`支持由[`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")和支持的格式化方法[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")。请注意，这将控制最终输出到日志的日志消息的格式，并且与单个日志消息的构造方式完全正交。
 
-记录呼叫([`debug()`](https://docs.python.org/3/library/logging.html#logging.Logger.debug "logging.Logger.debug")，[`info()`](https://docs.python.org/3/library/logging.html#logging.Logger.info "logging.Logger.info")等)只取位置参数进行实际记录消息本身，只有用于确定如何处理该呼叫的日志记录选项一起使用关键字参数(例如，`exc_info`关键字参数以指示追溯信息应记录，或`extra`关键字参数，用于指示要添加到日志中的其他上下文信息)。因此，您无法使用[`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")或[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")语法直接进行日志记录调用，因为日志记录包内部使用％-formatting来合并格式字符串和变量参数。在保留向后兼容性的同时不会改变这一点，因为现有代码中的所有日志记录调用都将使用％-format字符串。
+记录调用([`debug()`](https://docs.python.org/3/library/logging.html#logging.Logger.debug "logging.Logger.debug")，[`info()`](https://docs.python.org/3/library/logging.html#logging.Logger.info "logging.Logger.info")等)只取位置参数进行实际记录消息本身，只有用于确定如何处理该调用的日志记录选项一起使用关键字参数(例如，`exc_info`关键字参数以指示追溯信息应记录，或`extra`关键字参数，用于指示要添加到日志中的其他上下文信息)。因此，您无法使用[`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "str.format")或[`string.Template`](https://docs.python.org/3/library/string.html#string.Template "string.Template")语法直接进行日志记录调用，因为日志记录包内部使用％-formatting来合并格式字符串和变量参数。在保留向后兼容性的同时不会改变这一点，因为现有代码中的所有日志记录调用都将使用％-format字符串。
 
 已有建议将格式样式与特定记录器相关联，但该方法也会遇到向后兼容性问题，因为任何现有代码都可能使用给定的记录器名称并使用％-formatting。
 
@@ -2360,7 +2360,7 @@ if __name__ == '__main__':
 
 此示例显示如何以关键字参数的形式将配置数据传递给构造实例的callable。运行时，上面的脚本将打印：
 
-```python
+```
 changed: hello
 ```
 
@@ -2538,7 +2538,7 @@ if __name__ == '__main__':
 
 运行此脚本时，应遵循以下输出：
 
-```python
+```
 Calling undecorated foo with False
 about to log at DEBUG ...
 about to log at INFO ...
@@ -2631,7 +2631,7 @@ if __name__ == '__main__':
 
 运行此脚本时，它应该打印如下：
 
-```python
+```
 2015-10-17 12:53:29,501 The local time is Sat Oct 17 13:53:29 2015
 2015-10-17 13:53:29,501 The local time is Sat Oct 17 13:53:29 2015
 ```
@@ -2698,10 +2698,10 @@ if __name__ == '__main__':
 ```python
 $ python logctx.py
 1. This should appear just once on stderr.
-3. This should appear once on stderr.
-5. This should appear twice - once on stderr and once on stdout.
-5. This should appear twice - once on stderr and once on stdout.
-6. This should appear just once on stderr.
+2. This should appear once on stderr.
+3. This should appear twice - once on stderr and once on stdout.
+4. This should appear twice - once on stderr and once on stdout.
+5. This should appear just once on stderr.
 ```
 
 如果我们再次运行它，但管`stderr`到`/dev/null`，我们看下面的，这是写入唯一的消息`stdout`：
